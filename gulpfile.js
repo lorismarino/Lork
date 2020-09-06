@@ -73,6 +73,7 @@ const scripts = () => {
         Accordion: `${folders.src}js/components/Accordion.js`,
         CustomSelect: `${folders.src}js/components/CustomSelect.js`,
         CustomFile: `${folders.src}js/components/CustomFile.js`,
+        CustomRange: `${folders.src}js/components/CustomRange.js`,
       },
       output: {
         filename: '[name].js',

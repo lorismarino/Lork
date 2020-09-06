@@ -1,0 +1,28 @@
+.custom-range {
+  width: $custom-range-width;
+  cursor: pointer;
+
+  &__bar {
+    height: $custom-range-bar-height;
+    border-radius: calc(#{$custom-range-bar-height} / 2);
+    position: absolute;
+    top: calc(50% - (#{$custom-range-bar-height} / 2));
+
+    &--background {
+      background-color: $custom-range-bar-background;
+    }
+
+    &--plain {
+      background-color: $custom-range-plain-bar-background;
+      transition: transform 0.3s ease-in-out;
+    }
+  }
+
+  &__cursor {
+    transition: transform 0.3s ease-in-out;
+    width: $custom-range-cursor-width;
+    height: $custom-range-cursor-height;
+    border-radius: 100%;
+    background-color: $custom-range-cursor-background;
+  }
+}

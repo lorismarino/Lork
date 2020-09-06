@@ -1,0 +1,17 @@
+.custom-range {
+  position: relative;
+
+  &__bar {
+    width: 100%;
+
+    &--plain {
+      transform: scaleX(0);
+      transform-origin: left;
+    }
+  }
+
+  &__cursor {
+    position: relative;
+    z-index: 2;
+  }
+}
