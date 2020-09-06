@@ -89,8 +89,3 @@ class Accordion {
 }
 
 export default Accordion
-
-const $accordions = Array.from(document.querySelectorAll('.accordion'))
-for (const $accordion of $accordions) {
-  new Accordion($accordion)
-}

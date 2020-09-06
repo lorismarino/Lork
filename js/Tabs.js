@@ -58,8 +58,3 @@ class Tabs {
 }
 
 export default Tabs
-
-const $tabs = Array.from(document.querySelectorAll('.tabs'))
-for (const $tab of $tabs) {
-  new Tabs($tab)
-}

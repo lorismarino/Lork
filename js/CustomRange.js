@@ -117,8 +117,3 @@ class CustomRange {
 }
 
 export default CustomRange
-
-const $customRanges = Array.from(document.querySelectorAll('.custom-range'))
-for (const $customRange of $customRanges) {
-  new CustomRange($customRange)
-}

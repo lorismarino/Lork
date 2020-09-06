@@ -1,11 +1,11 @@
-import Accordion from './components/Accordion'
-import Carousel from './components/Carousel'
-import CustomFile from './components/CustomFile'
-import CustomRange from './components/CustomRange'
-import CustomSelect from './components/CustomSelect'
-import Dropdown from './components/Dropdown'
-import Modal from './components/Modal'
-import Tabs from './components/Tabs'
+import Accordion from './Accordion'
+import Carousel from './Carousel'
+import CustomFile from './CustomFile'
+import CustomRange from './CustomRange'
+import CustomSelect from './CustomSelect'
+import Dropdown from './Dropdown'
+import Modal from './Modal'
+import Tabs from './Tabs'
 
 const $accordions = Array.from(document.querySelectorAll('.accordion'))
 for (const $accordion of $accordions) {

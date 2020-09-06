@@ -104,8 +104,3 @@ class CustomFile {
 }
 
 export default CustomFile
-
-const $customFiles = Array.from(document.querySelectorAll('.custom-file'))
-for (const $customFile of $customFiles) {
-  new CustomFile($customFile)
-}

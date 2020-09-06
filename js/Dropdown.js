@@ -132,8 +132,3 @@ class Dropdown {
 }
 
 export default Dropdown
-
-const $dropdowns = Array.from(document.querySelectorAll('.dropdown'))
-for (const $dropdown of $dropdowns) {
-  new Dropdown($dropdown)
-}

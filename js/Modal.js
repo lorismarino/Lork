@@ -64,8 +64,3 @@ class Modal {
 }
 
 export default Modal
-
-const $modals = Array.from(document.querySelectorAll('.modal'))
-for (const $modal of $modals) {
-  new Modal($modal)
-}

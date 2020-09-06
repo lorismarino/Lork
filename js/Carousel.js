@@ -390,8 +390,3 @@ class Carousel {
 }
 
 export default Carousel
-
-const $carousels = Array.from(document.querySelectorAll('.carousel'))
-for (const $carousel of $carousels) {
-  new Carousel($carousel)
-}

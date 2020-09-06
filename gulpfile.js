@@ -7,7 +7,7 @@ const del = require('del')
 
 // Folders
 const folders = {
-  src: './src/',
+  src: './',
   dist: './dist/',
   exemples: './exemples/',
 }
@@ -68,19 +68,8 @@ const scripts = () => {
   return gulp.src(`${folders.src}js/main.js`)
     .pipe(plugins.plumber())
     .pipe(webpack({
-      entry: {
-        main: `${folders.src}js/main.js`,
-        Accordion: `${folders.src}js/components/Accordion.js`,
-        Carousel: `${folders.src}js/components/Carousel.js`,
-        CustomFile: `${folders.src}js/components/CustomFile.js`,
-        CustomRange: `${folders.src}js/components/CustomRange.js`,
-        CustomSelect: `${folders.src}js/components/CustomSelect.js`,
-        Dropdown: `${folders.src}js/components/Dropdown.js`,
-        Modal: `${folders.src}js/components/Modal.js`,
-        Tabs: `${folders.src}js/components/Tabs.js`,
-      },
       output: {
-        filename: '[name].js',
+        filename: 'main.js',
       },
       module: {
         rules: [
