@@ -1,0 +1,44 @@
+{
+  "name": "lork",
+  "version": "0.1.0",
+  "description": "The small framework for great freedom.",
+  "author": "Loris Marino <loris.mro@gmail.com> (https://lorismarino.fr)",
+  "license": "MIT",
+  "browserslist": [
+    "defaults"
+  ],
+  "scripts": {
+    "dev": "gulp",
+    "build": "gulp build"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.4.5",
+    "@babel/preset-env": "^7.5.5",
+    "babel-eslint": "^10.0.2",
+    "babel-loader": "^8.0.6",
+    "browser-sync": "^2.26.7",
+    "browserslist": "^4.6.3",
+    "del": "^5.0.0",
+    "eslint-config-prettier": "^6.11.0",
+    "eslint-config-standard": "^12.0.0",
+    "eslint-plugin-import": "^2.18.0",
+    "eslint-plugin-node": "^9.1.0",
+    "eslint-plugin-prettier": "^3.1.4",
+    "eslint-plugin-promise": "^4.2.1",
+    "eslint-plugin-standard": "^4.0.0",
+    "gulp": "^4.0.2",
+    "gulp-autoprefixer": "^6.1.0",
+    "gulp-babel": "^8.0.0",
+    "gulp-clean-css": "^4.2.0",
+    "gulp-eslint": "^6.0.0",
+    "gulp-load-plugins": "^1.6.0",
+    "gulp-notify": "^2.0.0",
+    "gulp-plumber": "^1.2.1",
+    "gulp-sass": "^4.0.2",
+    "gulp-sourcemaps": "^2.6.5",
+    "gulp-watch": "^5.0.1",
+    "node-sass": "^4.12.0",
+    "prettier": "^1.19.1",
+    "webpack-stream": "^5.2.1"
+  }
+}
