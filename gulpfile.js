@@ -70,6 +70,7 @@ const scripts = () => {
     .pipe(webpack({
       entry: {
         main: `${folders.src}js/main.js`,
+        Accordion: `${folders.src}js/components/Accordion.js`,
         CustomSelect: `${folders.src}js/components/CustomSelect.js`,
       },
       output: {
