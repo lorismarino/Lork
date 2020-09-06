@@ -12,11 +12,6 @@
   * modules
 */
 
-// custom select
-@import '03-module/custom-select/custom-select-variables';
-@import '03-module/custom-select/custom-select';
-@import '03-module/custom-select/custom-select-theme';
-
 // accordion
 @import '03-module/accordion/accordion-variables';
 @import '03-module/accordion/accordion';
@@ -30,6 +25,11 @@
 @import '03-module/custom-range/custom-range-variables';
 @import '03-module/custom-range/custom-range';
 @import '03-module/custom-range/custom-range-theme';
+
+// custom select
+@import '03-module/custom-select/custom-select-variables';
+@import '03-module/custom-select/custom-select';
+@import '03-module/custom-select/custom-select-theme';
 
 // dropdown
 @import '03-module/dropdown/dropdown-variables';
