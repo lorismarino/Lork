@@ -68,8 +68,12 @@ const scripts = () => {
   return gulp.src(`${folders.src}js/main.js`)
     .pipe(plugins.plumber())
     .pipe(webpack({
+      entry: {
+        main: `${folders.src}js/main.js`,
+        CustomSelect: `${folders.src}js/components/CustomSelect.js`,
+      },
       output: {
-        filename: 'main.js',
+        filename: '[name].js',
       },
       module: {
         rules: [
@@ -128,8 +132,12 @@ const minScripts = () => {
   return gulp.src(`${folders.src}js/main.js`)
     .pipe(plugins.plumber())
     .pipe(webpack({
+      entry: {
+        main: `${folders.src}js/main.js`,
+        CustomSelect: `${folders.src}js/components/CustomSelect.js`,
+      },
       output: {
-        filename: 'main.js'
+        filename: '[name].js',
       },
       module: {
         rules: [

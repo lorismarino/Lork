@@ -1,0 +1,29 @@
+.custom-select {
+  position: relative;
+
+  &__container {
+    position: absolute;
+    right: 0;
+    top: 100%;
+    left: 0;
+    pointer-events: none;
+    overflow: hidden;
+  }
+
+  &__content {
+    transform: translateY(-100%);
+    transition: transform 0.3s ease-in-out;
+  }
+
+  &--open {
+    .custom-select {
+      &__container {
+        pointer-events: all;
+      }
+
+      &__content {
+        transform: none;
+      }
+    }
+  }
+}
