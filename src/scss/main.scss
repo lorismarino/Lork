@@ -36,6 +36,11 @@
 @import '03-module/dropdown/dropdown';
 @import '03-module/dropdown/dropdown-theme';
 
+// flex-grid
+@import '03-module/flex-grid/flex-grid-variables';
+@import '03-module/flex-grid/flex-grid-mixins';
+@import '03-module/flex-grid/flex-grid';
+
 // modal
 @import '03-module/modal/modal';
 @import '03-module/modal/modal-theme';

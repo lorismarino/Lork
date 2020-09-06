@@ -1,0 +1,62 @@
+/**********
+ * flex-grid
+ * Made by Loris Marino <loris.mro@gmail.com>
+ * https://github.com/LorisMarino
+ * https://lorismarino.fr
+ */
+
+/* container settings */
+.container {
+  margin: 0 auto;
+}
+
+.container-fluid,
+.container {
+  padding: 0 #{$container-padding};
+}
+
+@each $prefix,
+$media-width,
+$width in $screens {
+  @media (min-width: $media-width) {
+    .container {
+      width: $width;
+    }
+  }
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: -#{$col-spacing};
+  margin-left: -#{$col-spacing};
+}
+
+[class^='col'] {
+  margin-top: $col-spacing;
+  margin-left: $col-spacing;
+}
+
+.row--noSpacing {
+  margin-top: 0;
+  margin-left: 0;
+
+  [class^='col'] {
+    margin-top: 0;
+    margin-left: 0;
+  }
+}
+
+// cols settings
+@each $prefix,
+$width in $screens {
+  @if($prefix=='') {
+    @include columns('');
+  }
+
+  @else {
+    @media (min-width: $width) {
+      @include columns($prefix);
+    }
+  }
+}

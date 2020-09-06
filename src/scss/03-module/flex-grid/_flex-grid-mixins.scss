@@ -1,0 +1,54 @@
+@mixin columns($screen) {
+
+  // size of cols
+  @for $i from 1 through $cols {
+    .col#{$screen}-#{$i} {
+      width: calc(#{100% / $cols * $i} - #{$col-spacing});
+    }
+  }
+
+  // offset cols
+  @for $i from 0 through $cols - 1 {
+    .col-left#{$screen}-#{$i} {
+      margin-left: #{100% / $cols * $i};
+    }
+  }
+
+  // justify-content
+  .justify#{$screen}-center {
+    justify-content: center;
+  }
+
+  .justify#{$screen}-start {
+    justify-content: flex-start;
+  }
+
+  .justify#{$screen}-end {
+    justify-content: flex-end;
+  }
+
+  .justify#{$screen}-between {
+    justify-content: space-between;
+  }
+
+  .justify#{$screen}-around {
+    justify-content: space-around;
+  }
+
+  .justify#{$screen}-evenly {
+    justify-content: space-evenly;
+  }
+
+  // align-items
+  .align#{$screen}-center {
+    align-items: center;
+  }
+
+  .align#{$screen}-start {
+    align-items: flex-start;
+  }
+
+  .align#{$screen}-end {
+    align-items: flex-end;
+  }
+}

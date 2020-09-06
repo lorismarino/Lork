@@ -1,0 +1,18 @@
+// breakpoints
+@mixin small {
+  @media (min-width: $s) {
+    @content;
+  }
+}
+
+@mixin medium {
+  @media (min-width: $m) {
+    @content;
+  }
+}
+
+@mixin large {
+  @media (min-width: $l) {
+    @content;
+  }
+}
