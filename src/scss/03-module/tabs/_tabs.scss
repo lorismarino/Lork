@@ -1,0 +1,11 @@
+.tabs {
+  &__content {
+    &Item {
+      display: none;
+
+      &--active {
+        display: block;
+      }
+    }
+  }
+}
