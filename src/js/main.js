@@ -1,4 +1,5 @@
 import Accordion from './components/Accordion'
+import Carousel from './components/Carousel'
 import CustomFile from './components/CustomFile'
 import CustomRange from './components/CustomRange'
 import CustomSelect from './components/CustomSelect'
@@ -9,6 +10,11 @@ import Tabs from './components/Tabs'
 const $accordions = Array.from(document.querySelectorAll('.accordion'))
 for (const $accordion of $accordions) {
   new Accordion($accordion)
+}
+
+const $carousels = Array.from(document.querySelectorAll('.carousel'))
+for (const $carousel of $carousels) {
+  new Carousel($carousel)
 }
 
 const $customFiles = Array.from(document.querySelectorAll('.custom-file'))

@@ -1,0 +1,21 @@
+.carousel {
+  user-select: none;
+
+  &__container {
+    overflow: hidden;
+  }
+
+  &__items {
+    display: flex;
+    width: 100%;
+    position: relative;
+  }
+
+  &__item {
+    flex: 0 0 100%;
+
+    img {
+      pointer-events: none;
+    }
+  }
+}

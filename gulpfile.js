@@ -71,9 +71,10 @@ const scripts = () => {
       entry: {
         main: `${folders.src}js/main.js`,
         Accordion: `${folders.src}js/components/Accordion.js`,
-        CustomSelect: `${folders.src}js/components/CustomSelect.js`,
+        Carousel: `${folders.src}js/components/Carousel.js`,
         CustomFile: `${folders.src}js/components/CustomFile.js`,
         CustomRange: `${folders.src}js/components/CustomRange.js`,
+        CustomSelect: `${folders.src}js/components/CustomSelect.js`,
         Dropdown: `${folders.src}js/components/Dropdown.js`,
         Modal: `${folders.src}js/components/Modal.js`,
         Tabs: `${folders.src}js/components/Tabs.js`,

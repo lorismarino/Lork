@@ -1,0 +1,67 @@
+.carousel {
+  width: 100%;
+  position: relative;
+
+  &__items {
+    cursor: grab;
+  }
+
+  &__item {
+    height: rem(300);
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  &__button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: rem(50);
+    color: #FFFFFF;
+    cursor: pointer;
+
+    &--left {
+      left: rem(10);
+
+      &::before {
+        content: '\2039';
+      }
+    }
+
+    &--right {
+      right: rem(10);
+
+      &::after {
+        content: '\203A';
+      }
+    }
+  }
+
+  &__pagination {
+    position: absolute;
+    bottom: rem(10);
+    left: 50%;
+    transform: translateX(-50%);
+
+    &Bullet {
+      width: rem(10);
+      height: rem(10);
+      cursor: pointer;
+      border: 1px solid $gray;
+      border-radius: 100%;
+
+      &--active {
+        background-color: #FFFFFF;
+        border: 1px solid #FFFFFF;
+      }
+
+      &:not(:first-child) {
+        margin-left: rem(10);
+      }
+    }
+  }
+}
