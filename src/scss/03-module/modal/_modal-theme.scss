@@ -1,0 +1,20 @@
+.modal {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &__content {
+    position: relative;
+    padding: rem(50);
+    border-radius: rem(10);
+    width: rem(600);
+    height: rem(300);
+    background-color: #fff;
+  }
+
+  &__close {
+    position: absolute;
+    right: rem(10);
+    top: rem(10);
+  }
+}

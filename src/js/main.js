@@ -3,6 +3,7 @@ import Accordion from './components/Accordion'
 import CustomFile from './components/CustomFile'
 import CustomRange from './components/CustomRange'
 import Dropdown from './components/Dropdown'
+import Modal from './components/Modal'
 
 const $customSelects = Array.from(document.querySelectorAll('.custom-select'))
 for (const $customSelect of $customSelects) {
@@ -27,4 +28,9 @@ for (const $customRange of $customRanges) {
 const $dropdowns = Array.from(document.querySelectorAll('.dropdown'))
 for (const $dropdown of $dropdowns) {
   new Dropdown($dropdown)
+}
+
+const $modals = Array.from(document.querySelectorAll('.modal'))
+for (const $modal of $modals) {
+  new Modal($modal)
 }

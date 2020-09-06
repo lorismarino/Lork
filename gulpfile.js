@@ -75,6 +75,7 @@ const scripts = () => {
         CustomFile: `${folders.src}js/components/CustomFile.js`,
         CustomRange: `${folders.src}js/components/CustomRange.js`,
         Dropdown: `${folders.src}js/components/Dropdown.js`,
+        Modal: `${folders.src}js/components/Modal.js`,
       },
       output: {
         filename: '[name].js',
