@@ -1,15 +1,10 @@
-import CustomSelect from './components/CustomSelect'
 import Accordion from './components/Accordion'
 import CustomFile from './components/CustomFile'
 import CustomRange from './components/CustomRange'
+import CustomSelect from './components/CustomSelect'
 import Dropdown from './components/Dropdown'
 import Modal from './components/Modal'
 import Tabs from './components/Tabs'
-
-const $customSelects = Array.from(document.querySelectorAll('.custom-select'))
-for (const $customSelect of $customSelects) {
-  new CustomSelect($customSelect)
-}
 
 const $accordions = Array.from(document.querySelectorAll('.accordion'))
 for (const $accordion of $accordions) {
@@ -24,6 +19,11 @@ for (const $customFile of $customFiles) {
 const $customRanges = Array.from(document.querySelectorAll('.custom-range'))
 for (const $customRange of $customRanges) {
   new CustomRange($customRange)
+}
+
+const $customSelects = Array.from(document.querySelectorAll('.custom-select'))
+for (const $customSelect of $customSelects) {
+  new CustomSelect($customSelect)
 }
 
 const $dropdowns = Array.from(document.querySelectorAll('.dropdown'))
