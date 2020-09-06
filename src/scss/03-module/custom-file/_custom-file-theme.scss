@@ -1,0 +1,30 @@
+.custom-file {
+  width: $custom-file-width;
+
+  &__container {
+    width: 100%;
+    height: $custom-file-height;
+    padding: rem(10);
+    display: inline-flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: $custom-file-background;
+    border: 1px solid $custom-file-border;
+  }
+
+  &__label {
+    word-break: break-all;
+  }
+
+  &__button {
+    margin-left: rem(10);
+    padding: rem(10);
+    cursor: pointer;
+    background-color: $custom-file-button-background;
+  }
+
+  &__size {
+    margin-top: rem(5);
+    text-align: right;
+  }
+}
