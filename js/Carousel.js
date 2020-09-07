@@ -85,7 +85,8 @@ class Carousel {
       this._moveLeft()
     })
 
-    this.$.navigation.right.addEventListener('click', () => {
+    this.$.navigation.right.addEventListener('click', event => {
+      event.stopImmediatePropagation()
       this._moveRight()
     })
 
@@ -160,27 +161,32 @@ class Carousel {
           setTimeout(() => {
             this.pressItems = false
 
-            if (event.clientX > this.actualPosition) this._moveLeft()
-            else if (event.clientX < this.actualPosition) this._moveRight()
+            if (event.clientX > this.actualPosition + 20) this._moveLeft()
+            else if (event.clientX < this.actualPosition - 20) this._moveRight()
 
             if (
-              this.type === 'infinite' &&
-              this.activeItem === this.numberItems &&
-              Array.from(this.$.items.querySelectorAll('.carousel__item'))
-                .length > this.numberItems
+              event.clientX > this.actualPosition + 20 ||
+              event.clientX < this.actualPosition - 20
             ) {
-              this.$.items.removeChild(
-                this.$.items.querySelector('.carousel__item')
-              )
-            } else if (
-              this.type === 'infinite' &&
-              this.activeItem === 1 &&
-              Array.from(this.$.items.querySelectorAll('.carousel__item'))
-                .length > this.numberItems
-            ) {
-              this.$.items.removeChild(
-                this.$.items.querySelector('.carousel__item:last-child')
-              )
+              if (
+                this.type === 'infinite' &&
+                this.activeItem === this.numberItems &&
+                Array.from(this.$.items.querySelectorAll('.carousel__item'))
+                  .length > this.numberItems
+              ) {
+                this.$.items.removeChild(
+                  this.$.items.querySelector('.carousel__item')
+                )
+              } else if (
+                this.type === 'infinite' &&
+                this.activeItem === 1 &&
+                Array.from(this.$.items.querySelectorAll('.carousel__item'))
+                  .length > this.numberItems
+              ) {
+                this.$.items.removeChild(
+                  this.$.items.querySelector('.carousel__item:last-child')
+                )
+              }
             }
           }, 100)
         })
