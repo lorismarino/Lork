@@ -6,7 +6,6 @@
 @import 'reset';
 
 // accordion
-@import 'accordion/accordion-variables';
 @import 'accordion/accordion';
 @import 'accordion/accordion-theme';
 
@@ -15,26 +14,21 @@
 @import 'carousel/carousel-theme';
 
 // custom-file
-@import 'custom-file/custom-file-variables';
 @import 'custom-file/custom-file-theme';
 
 // custom range
-@import 'custom-range/custom-range-variables';
 @import 'custom-range/custom-range';
 @import 'custom-range/custom-range-theme';
 
 // custom select
-@import 'custom-select/custom-select-variables';
 @import 'custom-select/custom-select';
 @import 'custom-select/custom-select-theme';
 
 // dropdown
-@import 'dropdown/dropdown-variables';
 @import 'dropdown/dropdown';
 @import 'dropdown/dropdown-theme';
 
 // flex-grid
-@import 'flex-grid/flex-grid-variables';
 @import 'flex-grid/flex-grid-mixins';
 @import 'flex-grid/flex-grid';
 
@@ -43,6 +37,5 @@
 @import 'modal/modal-theme';
 
 // tabs
-@import 'tabs/tabs-variables';
 @import 'tabs/tabs';
 @import 'tabs/tabs-theme';
