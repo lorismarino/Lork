@@ -5,8 +5,6 @@
  * https://lorismarino.fr
  */
 
-import { TweenLite, Power4 } from 'gsap'
-
 class Carousel {
   constructor($carousel) {
     this.$ = {} // Initialize object of DOM elements.
@@ -331,37 +329,37 @@ class Carousel {
   }
 
   _moveItems(x, position = null) {
-    TweenLite.to(this.$.items, 1, {
-      ease: Power4.easeOut,
-      x: x * -this.width,
-      onComplete: () => {
-        if (
-          this.type === 'infinite' &&
-          position === 'right' &&
-          this.activeItem === 1
-        ) {
-          this.$.items.removeChild(
-            this.$.items.querySelector('.carousel__item')
-          )
-          TweenLite.to(this.$.items, 0, { x: 0 })
-          this.$.items.insertBefore(
-            this.$.items.querySelector('.carousel__item:last-child'),
-            this.$.items.querySelector('.carousel__item')
-          )
-        } else if (
-          this.type === 'infinite' &&
-          position === 'left' &&
-          this.activeItem === this.numberItems
-        ) {
-          this.$.items.removeChild(
-            this.$.items.querySelector('.carousel__item')
-          )
-          TweenLite.to(this.$.items, 0, {
-            x: (this.numberItems - 1) * -this.width
-          })
-        }
+    let t
+    clearTimeout(t)
+    this.$.items.style.transition = 'transform 1s ease-in-out'
+    this.$.items.style.transform = `translateX(${x * -this.width}px)`
+
+    t = setTimeout(() => {
+      if (
+        this.type === 'infinite' &&
+        position === 'right' &&
+        this.activeItem === 1
+      ) {
+        this.$.items.removeChild(this.$.items.querySelector('.carousel__item'))
+
+        this.$.items.style.transition = 'none'
+        this.$.items.style.transform = 'none'
+
+        this.$.items.insertBefore(
+          this.$.items.querySelector('.carousel__item:last-child'),
+          this.$.items.querySelector('.carousel__item')
+        )
+      } else if (
+        this.type === 'infinite' &&
+        position === 'left' &&
+        this.activeItem === this.numberItems
+      ) {
+        this.$.items.removeChild(this.$.items.querySelector('.carousel__item'))
+        this.$.items.style.transition = 'none'
+        this.$.items.style.transform = `translateX(${(this.numberItems - 1) *
+          -this.width})`
       }
-    })
+    }, 1000)
 
     if (position === 'left') {
       this.$.carousel
