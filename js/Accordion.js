@@ -5,8 +5,6 @@
  * https://lorismarino.fr
  */
 
-import { TweenLite, Power4 } from 'gsap'
-
 class Accordion {
   constructor($accordion) {
     this.$ = {} // Initialize object of DOM elements.
@@ -62,11 +60,7 @@ class Accordion {
           for (const { item } of this.items) {
             if (!item.contains(event.target)) {
               if (item.classList.contains('accordion__item--open')) {
-                TweenLite.to(
-                  item.querySelector('.accordion__itemContainer'),
-                  0.3,
-                  { ease: Power4.easeInOut, height: 0 }
-                )
+                item.querySelector('.accordion__itemContainer').style.height = 0
                 item.classList.remove('accordion__item--open')
               }
             }
@@ -74,13 +68,10 @@ class Accordion {
         }
 
         if (item.classList.contains('accordion__item--open')) {
-          TweenLite.to($content, 0.3, { ease: Power4.easeInOut, height: 0 })
+          $content.style.height = 0
           item.classList.remove('accordion__item--open')
         } else {
-          TweenLite.to($content, 0.5, {
-            ease: Power4.easeInOut,
-            height: height
-          })
+          $content.style.height = `${height}px`
           item.classList.add('accordion__item--open')
         }
       })

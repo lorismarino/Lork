@@ -1,5 +1,9 @@
 .accordion {
   &__item {
     overflow: hidden;
+
+    &Container {
+      transition: height 0.3s ease-in-out;
+    }
   }
 }
