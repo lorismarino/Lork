@@ -10,6 +10,8 @@
       background-color: $accordion-button-background;
       cursor: pointer;
       position: relative;
+      width: 100%;
+      text-align: left;
 
       &::after {
         content: '\25BE';
