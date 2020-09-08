@@ -5,6 +5,7 @@ import CustomRange from './CustomRange'
 import CustomSelect from './CustomSelect'
 import Dropdown from './Dropdown'
 import Modal from './Modal'
+import Reset from './Reset'
 import Tabs from './Tabs'
 
 const $accordions = Array.from(document.querySelectorAll('.accordion'))
@@ -42,15 +43,9 @@ for (const $modal of $modals) {
   new Modal($modal)
 }
 
+new Reset()
+
 const $tabs = Array.from(document.querySelectorAll('.tabs'))
 for (const $tab of $tabs) {
   new Tabs($tab)
 }
-
-document.addEventListener('keydown', () => {
-  document.body.classList.add('keyboard')
-})
-
-document.addEventListener('mousedown', () => {
-  document.body.classList.remove('keyboard')
-})
