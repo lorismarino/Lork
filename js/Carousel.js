@@ -84,9 +84,13 @@ class Carousel {
       this._moveLeft()
     })
 
-    this.$.navigation.right.addEventListener('click', event => {
-      event.stopImmediatePropagation()
+    this.$.navigation.right.addEventListener('click', () => {
       this._moveRight()
+    })
+
+    this.$.carousel.addEventListener('keyup', event => {
+      if (event.keyCode === 37) this._moveLeft()
+      else if (event.keyCode === 39) this._moveRight()
     })
 
     for (const $bullet of Array.from(
