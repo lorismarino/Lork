@@ -46,3 +46,11 @@ const $tabs = Array.from(document.querySelectorAll('.tabs'))
 for (const $tab of $tabs) {
   new Tabs($tab)
 }
+
+document.addEventListener('keydown', () => {
+  document.body.classList.add('keyboard')
+})
+
+document.addEventListener('mousedown', () => {
+  document.body.classList.remove('keyboard')
+})

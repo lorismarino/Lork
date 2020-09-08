@@ -4,7 +4,9 @@
   box-sizing: border-box;
 }
 
-button, input, textarea {
+button,
+input,
+textarea {
   appearance: none;
   border: none;
   background: transparent;
@@ -13,5 +15,16 @@ button, input, textarea {
 
   &:focus {
     outline: none;
+  }
+}
+
+.keyboard {
+
+  button,
+  input,
+  textarea {
+    &:focus {
+      box-shadow: inset 0 0 3px rgba(#000, 0.3);
+    }
   }
 }
