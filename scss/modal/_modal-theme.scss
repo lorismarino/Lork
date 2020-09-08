@@ -16,5 +16,10 @@
     position: absolute;
     right: rem(10);
     top: rem(10);
+    cursor: pointer;
+
+    &::after {
+      content: '\00d7';
+    }
   }
 }
