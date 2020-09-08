@@ -19,7 +19,6 @@ components available for the first release :
 **todo for the 1.1.0 release :**
 
  - [ ] accordion
-	 - [ ] add aria attributes
 	 - [ ] add keyboard navigation
  - [ ] carousel
 	 - [ ] add aria attributes
