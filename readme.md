@@ -20,11 +20,11 @@ components available for the first release :
 
  - [x] accordion
 	 - [x] add keyboard navigation
- - [ ] carousel
-	 - [ ] add aria attributes
-	 - [ ] add keyboard navigation
- - [ ] dropdown
-	 - [ ] add keyboard navigation
+ - [x] carousel
+	 - [x] add aria attributes
+	 - [x] add keyboard navigation
+ - [x] dropdown
+	 - [x] add keyboard navigation
  - [ ] modal
 	 - [ ] add aria attributes
 	 - [ ] add keyboard navigation
