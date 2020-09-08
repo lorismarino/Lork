@@ -25,10 +25,10 @@ components available for the first release :
 	 - [x] add keyboard navigation
  - [x] dropdown
 	 - [x] add keyboard navigation
- - [ ] modal
-	 - [ ] add aria attributes
-	 - [ ] add keyboard navigation
- - [ ] tabs
-	 - [ ] add keyboard navigation
+ - [x] modal
+	 - [x] add aria attributes
+	 - [x] add keyboard navigation
+ - [x] tabs
+	 - [x] add keyboard navigation
 
 *Documentation will be available in the next version.*
