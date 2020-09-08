@@ -1,5 +1,6 @@
 /**********
  * Tabs
+ * v1.0.0
  * Made by Loris Marino <loris.mro@gmail.com>
  * https://github.com/LorisMarino
  * https://lorismarino.fr
@@ -27,7 +28,7 @@ class Tabs {
   /**
    * Initialize params
    */
-  _initParams() { }
+  _initParams() {}
 
   /**
    * Initialize component.
