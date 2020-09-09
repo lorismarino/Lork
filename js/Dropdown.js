@@ -20,6 +20,7 @@ class Dropdown {
    */
   _initParams() {
     this.isOnMobile = this.$.dropdown.dataset.mobile // Set custom mobile is activated.
+    this.name = this.$.dropdown.dataset.name
     this.type = this.$.dropdown.dataset.type
       ? this.$.dropdown.dataset.type
       : 'link' // Set type of dropdown.
@@ -84,11 +85,13 @@ class Dropdown {
       this.$.choose = document.createElement('div')
       this.$.choose.classList.add('dropdown__choose')
       this.$.choose.innerHTML = this.$.dropdown.dataset.label
+      this.$.choose.setAttribute('id', this.name)
 
       // Create wrapping container for content.
       const $container = document.createElement('div')
       $container.classList.add('dropdown__container')
       $container.appendChild($content)
+      $container.setAttribute('aria-labelledby', this.name)
       this.$.dropdown.innerHTML = ''
       this.$.dropdown.appendChild(this.$.choose)
       this.$.dropdown.appendChild($container)
