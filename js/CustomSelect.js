@@ -19,6 +19,7 @@ class CustomSelect {
    * Initialize params
    */
   _initParams() {
+    this.name = this.$.customSelect.dataset.name
     this.isFilters = this.$.customSelect.dataset.filters // Set filters is activated.
     this.isOnMobile = this.$.customSelect.dataset.mobile // Set custom mobile is activated.
     this.virtualLabel = this.$.customSelect.dataset.label // Set activated label.
@@ -32,7 +33,7 @@ class CustomSelect {
     if (!this.isOnMobile && window.matchMedia('(max-width: 991px)').matches) {
       // Create the select element.
       const $select = document.createElement('select')
-      $select.setAttribute('name', this.$.customSelect.dataset.name)
+      $select.setAttribute('name', this.name)
 
       // Create the default select option.
       const $option = document.createElement('option')
@@ -69,6 +70,7 @@ class CustomSelect {
 
       // Create the button.
       this.$.choose = document.createElement('div')
+      this.$.choose.setAttribute('id', this.name)
       this.$.choose.classList.add('custom-select__choose')
       if (!this.isFilters)
         this.$.choose.innerHTML = this.$.customSelect.dataset.label
@@ -76,6 +78,7 @@ class CustomSelect {
       // Create wrapping container for content.
       const $container = document.createElement('div')
       $container.classList.add('custom-select__container')
+      $container.setAttribute('aria-labelledby', this.name)
       $container.appendChild($content)
       this.$.customSelect.innerHTML = ''
       this.$.customSelect.appendChild(this.$.choose)
@@ -83,7 +86,7 @@ class CustomSelect {
 
       // Create input for select value.
       this.$.input = document.createElement('input')
-      this.$.input.setAttribute('name', this.$.customSelect.dataset.name)
+      this.$.input.setAttribute('name', this.name)
       this.$.input.style.display = 'none'
       this.$.customSelect.appendChild(this.$.input)
 
