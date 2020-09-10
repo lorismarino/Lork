@@ -2,15 +2,10 @@
   "name": "lork",
   "version": "1.0.2",
   "description": "The small framework for great freedom.",
-  "author": "Loris Marino <loris.mro@gmail.com> (https://lorismarino.fr)",
   "license": "MIT",
   "browserslist": [
     "defaults"
   ],
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/lorismarino/Lork.git"
-  },
   "scripts": {
     "dev": "gulp",
     "build": "gulp build"

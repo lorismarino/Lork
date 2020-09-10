@@ -4,6 +4,7 @@ import CustomFile from './CustomFile'
 import CustomRange from './CustomRange'
 import CustomSelect from './CustomSelect'
 import Dropdown from './Dropdown'
+import FormValidation from './FormValidation'
 import Modal from './Modal'
 import Reset from './Reset'
 import Tabs from './Tabs'
@@ -36,6 +37,11 @@ for (const $customSelect of $customSelects) {
 const $dropdowns = Array.from(document.querySelectorAll('.dropdown'))
 for (const $dropdown of $dropdowns) {
   new Dropdown($dropdown)
+}
+
+const $forms = Array.from(document.querySelectorAll('.validation'))
+for (const $form of $forms) {
+  new FormValidation($form)
 }
 
 const $modals = Array.from(document.querySelectorAll('.modal'))

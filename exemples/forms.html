@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../dist/css/main.css">
+  <title>forms</title>
+</head>
+
+<body>
+  <form class="validation" novalidate>
+    <div class="input-group" data-minlength="4" data-errorminlength="minimum 4 caractères" data-required="true"
+      data-requiredmessage="champ obligatoire">
+      <input type="text">
+    </div>
+    <div class="input-group" data-minlength="4" data-errorminlength="minimum 8" data-required="true"
+      data-requiredmessage="champ obligatoire">
+      <input type="number">
+    </div>
+    <div class="input-group" data-required="true" data-requiredmessage="champ obligatoire"
+      data-errormessage="email non valide">
+      <input type="email">
+    </div>
+    <div class="input-group" data-required="true" data-requiredmessage="champ obligatoire"
+      data-errormessage="tel non valide">
+      <input type="tel">
+    </div>
+  </form>
+
+  <script src="../dist/js/main.js"></script>
+</body>
+
+</html>
