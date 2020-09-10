@@ -95,19 +95,19 @@ class FormValidation {
   }
 
   setError($inputGroup, error) {
-    let $error = $inputGroup.querySelector('.input-group--error')
+    let $error = $inputGroup.querySelector('.input-group__error')
     if ($error) {
       $error.innerText = error
     } else {
       $error = document.createElement('p')
-      $error.classList.add('input-group--error')
+      $error.classList.add('input-group__error')
       $error.innerText = error
       $inputGroup.appendChild($error)
     }
   }
 
   clearError($inputGroup) {
-    const $error = $inputGroup.querySelector('.input-group--error')
+    const $error = $inputGroup.querySelector('.input-group__error')
     if ($error) {
       $inputGroup.removeChild($error)
     }

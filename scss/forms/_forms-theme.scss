@@ -1,1 +1,16 @@
-.input-group {}
+@import 'forms-theme-variables';
+
+.input-group {
+  &:not(:first-child) {
+    margin-top: $group-spacing;
+  }
+
+  input {
+    border: 1px solid $input-border;
+  }
+
+  &__error {
+    margin-top: $error-spacing;
+    color: $error-color;
+  }
+}
