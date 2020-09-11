@@ -8,8 +8,18 @@ class FormValidation {
     this.$ = {} // Initialize object of DOM elements.
     this.$.form = $form // Add form in DOM objects.
 
+    this._initParams()
     this._initDOM()
     this._initialize()
+  }
+
+  /**
+   * Initialize params
+   */
+  _initParams() {
+    this.noInstant = !!this.$.form.dataset.noinstant
+    this.noSubmit = !!this.$.form.dataset.nosubmit
+    this.formError = false
   }
 
   /**
@@ -34,7 +44,22 @@ class FormValidation {
     )) {
       const $input = $inputGroup.querySelector('input')
       $input.addEventListener('blur', () => {
-        this.validate($inputGroup)
+        if (!this.noInstant) {
+          this.validate($inputGroup)
+        }
+      })
+    }
+
+    if (!this.noSubmit) {
+      this.$.form.addEventListener('submit', event => {
+        this.formError = false
+        for (const $inputGroup of Array.from(
+          this.$.form.querySelectorAll('.input-group')
+        )) {
+          if (!this.validate($inputGroup)) this.formError = true
+        }
+
+        if (this.formError) event.preventDefault()
       })
     }
   }
@@ -62,37 +87,61 @@ class FormValidation {
       rules.errorMessage = $inputGroup.dataset.errormessage
 
     if (inputType === 'text') {
-      if (rules.required && !value)
+      if (rules.required && !value) {
         this.setError($inputGroup, rules.requiredMessage || 'required')
-      else if (rules.minLength && value.length < rules.minLength)
+        return false
+      } else if (rules.minLength && value.length < rules.minLength) {
         this.setError($inputGroup, rules.errorMinLength || 'too low')
-      else if (rules.maxLength && value.length > rules.maxLength)
+        return false
+      } else if (rules.maxLength && value.length > rules.maxLength) {
         this.setError($inputGroup, rules.errorMaxLength || 'too big')
-      else this.clearError($inputGroup)
+        return false
+      } else {
+        this.clearError($inputGroup)
+        return true
+      }
     } else if (inputType === 'number') {
-      if (rules.required && !value)
+      if (rules.required && !value) {
         this.setError($inputGroup, rules.requiredMessage || 'required')
-      else if (rules.minLength && value < rules.minLength)
+        return false
+      } else if (rules.minLength && value < rules.minLength) {
         this.setError($inputGroup, rules.errorMinLength || 'too low')
-      else if (rules.maxLength && value > rules.maxLength)
+        return false
+      } else if (rules.maxLength && value > rules.maxLength) {
         this.setError($inputGroup, rules.errorMaxLength || 'too big')
-      else this.clearError($inputGroup)
+        return false
+      } else {
+        this.clearError($inputGroup)
+        return true
+      }
     } else if (inputType === 'email') {
-      if (rules.required && !value)
+      if (rules.required && !value) {
         this.setError($inputGroup, rules.requiredMessage || 'required')
-      else if (
+        return false
+      } else if (
         !value.match(
           /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
         )
-      )
+      ) {
         this.setError($inputGroup, rules.errorMessage || 'not a valid email')
-      else this.clearError($inputGroup)
+        return false
+      } else {
+        this.clearError($inputGroup)
+        return true
+      }
     } else if (inputType === 'tel') {
-      if (rules.required && !value)
+      if (rules.required && !value) {
         this.setError($inputGroup, rules.requiredMessage || 'required')
-      else if (!value.match(/^(?:(?:\+|00)33|0)\s*[1-9](?:[\s.-]*\d{2}){4}$/))
+        return false
+      } else if (
+        !value.match(/^(?:(?:\+|00)33|0)\s*[1-9](?:[\s.-]*\d{2}){4}$/)
+      ) {
         this.setError($inputGroup, rules.errorMessage || 'not a valid email')
-      else this.clearError($inputGroup)
+        return false
+      } else {
+        this.clearError($inputGroup)
+        return true
+      }
     }
   }
 
