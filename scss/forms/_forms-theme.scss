@@ -5,7 +5,13 @@
     margin-top: $group-spacing;
   }
 
+  label {
+    margin-bottom: $label-spacing;
+    display: block;
+  }
+
   input {
+    padding: $input-padding;
     border: 1px solid $input-border;
   }
 

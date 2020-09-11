@@ -12,19 +12,23 @@
   <form class="validation" novalidate>
     <div class="input-group" data-minlength="4" data-errorminlength="minimum 4 caractères" data-required="true"
       data-requiredmessage="champ obligatoire">
-      <input type="text">
+      <label for="name">Name</label>
+      <input type="text" id="name">
     </div>
     <div class="input-group" data-minlength="4" data-errorminlength="minimum 8" data-required="true"
       data-requiredmessage="champ obligatoire">
-      <input type="number">
+      <label for="age">Age</label>
+      <input type="number" id="age">
     </div>
     <div class="input-group" data-required="true" data-requiredmessage="champ obligatoire"
       data-errormessage="email non valide">
-      <input type="email">
+      <label for="email">Email</label>
+      <input type="email" id="email">
     </div>
     <div class="input-group" data-required="true" data-requiredmessage="champ obligatoire"
       data-errormessage="tel non valide">
-      <input type="tel">
+      <label for="phone">Phone</label>
+      <input type="tel" id="phone">
     </div>
   </form>
 
