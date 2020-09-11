@@ -90,6 +90,8 @@ class FormValidation {
     } else if (inputType === 'tel') {
       if (rules.required && !value)
         this.setError($inputGroup, rules.requiredMessage || 'required')
+      else if (!value.match(/^(?:(?:\+|00)33|0)\s*[1-9](?:[\s.-]*\d{2}){4}$/))
+        this.setError($inputGroup, rules.errorMessage || 'not a valid email')
       else this.clearError($inputGroup)
     }
   }
