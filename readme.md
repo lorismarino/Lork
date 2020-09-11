@@ -12,6 +12,8 @@ components available for the first release :
  - custom range (v1.0.0)
  - custom select (v1.0.0)
  - dropdown (v1.0.0)
+ - forms (1.0.0)
+ - form validation (1.0.0)
  - flex grid (v1.0.0)
  - modal (v1.0.0)
  - tabs (v1.0.0)
