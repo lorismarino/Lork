@@ -4,8 +4,6 @@ Lork is a modular framework, you can use each component independently or include
 
 ✓ No dependencies.
 
-components available for the first release :
-
  - accordion (v1.0.0)
  - carousel (v1.0.1)
  - custom file (v1.0.0)
