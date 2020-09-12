@@ -1,21 +1,5 @@
-// breakpoints
-$s: 768px !default;
-$m: 992px !default;
-$l: 1200px !default;
-
-// container sizes
-$s-width: 720px !default;
-$m-width: 960px !default;
-$l-width: 1140px !default;
-
-// screens array
-$screens: (('', '', ''),
-  ('-s', $s, $s-width),
-  ('-m', $m, $m-width),
-  ('-l', $l, $l-width));
-
 // numbers of columns
-$cols: 12;
+$cols: 12 !default;
 
 $container-padding: 15px !default;
 $col-spacing: 15px !default;
