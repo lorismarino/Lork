@@ -1,0 +1,23 @@
+@import 'utilitites-variables';
+@import 'utilitites-mixins';
+
+
+
+@each $prefix,
+$width in $screens {
+  @if($spacing) {
+    @if($prefix=='') {
+      @include spacing('');
+      @include display('');
+      @include flex('');
+    }
+
+    @else {
+      @media (min-width: $width) {
+        @include spacing($prefix);
+        @include display($prefix);
+        @include flex($prefix);
+      }
+    }
+  }
+}
