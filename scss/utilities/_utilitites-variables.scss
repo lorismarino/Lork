@@ -1,0 +1,19 @@
+// breakpoints
+$s: 768px !default;
+$m: 992px !default;
+$l: 1200px !default;
+
+// screens array
+$screens: (('', '', ''),
+  ('-s', $s, $s-width),
+  ('-m', $m, $m-width),
+  ('-l', $l, $l-width));
+
+/*****
+  * Define utilities and settings
+*****/
+
+// spacing
+$spacing: true;
+$spacing-step: 2;
+$spacing-max: 100;

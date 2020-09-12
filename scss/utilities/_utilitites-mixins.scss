@@ -1,0 +1,66 @@
+@mixin spacing($screen) {
+  @for $i from 1 through $spacing-max {
+
+    // margin
+    .ma#{$screen}-#{$i} {
+      margin: #{$i * $spacing-step}px;
+    }
+
+    .my#{$screen}-#{$i} {
+      margin-top: #{$i * $spacing-step}px;
+      margin-bottom: #{$i * $spacing-step}px;
+    }
+
+    .mx#{$screen}-#{$i} {
+      margin-right: #{$i * $spacing-step}px;
+      margin-left: #{$i * $spacing-step}px;
+    }
+
+    .mt#{$screen}-#{$i} {
+      margin-top: #{$i * $spacing-step}px;
+    }
+
+    .mr#{$screen}-#{$i} {
+      margin-right: #{$i * $spacing-step}px;
+    }
+
+    .mb#{$screen}-#{$i} {
+      margin-bottom: #{$i * $spacing-step}px;
+    }
+
+    .ml#{$screen}-#{$i} {
+      margin-left: #{$i * $spacing-step}px;
+    }
+
+    // padding
+    .pa#{$screen}-#{$i} {
+      padding: #{$i * $spacing-step}px;
+    }
+
+    .py#{$screen}-#{$i} {
+      padding-top: #{$i * $spacing-step}px;
+      padding-bottom: #{$i * $spacing-step}px;
+    }
+
+    .px#{$screen}-#{$i} {
+      padding-right: #{$i * $spacing-step}px;
+      padding-left: #{$i * $spacing-step}px;
+    }
+
+    .pt#{$screen}-#{$i} {
+      padding-top: #{$i * $spacing-step}px;
+    }
+
+    .pr#{$screen}-#{$i} {
+      padding-right: #{$i * $spacing-step}px;
+    }
+
+    .pb#{$screen}-#{$i} {
+      padding-bottom: #{$i * $spacing-step}px;
+    }
+
+    .pl#{$screen}-#{$i} {
+      padding-left: #{$i * $spacing-step}px;
+    }
+  }
+}
