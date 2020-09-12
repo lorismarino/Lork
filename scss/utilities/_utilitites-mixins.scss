@@ -187,3 +187,93 @@
     flex: 1;
   }
 }
+
+@mixin colors($screen) {
+
+  @each $name,
+  $value in $colors {
+    .text#{$screen}-#{$name} {
+      color: $value
+    }
+
+    .bg#{$screen}-#{$name} {
+      background-color: $value
+    }
+  }
+
+}
+
+@mixin texts($screen) {
+
+  // text-decoration
+  .text-decoration#{$screen}-none {
+    text-decoration: none;
+  }
+
+  .text-decoration#{$screen}-underline {
+    text-decoration: underline;
+  }
+
+  // font-weight
+  .text#{$screen}-100 {
+    font-weight: 100;
+  }
+
+  .text#{$screen}-300 {
+    font-weight: 300;
+  }
+
+  .text#{$screen}-400 {
+    font-weight: 400;
+  }
+
+  .text#{$screen}-500 {
+    font-weight: 500;
+  }
+
+  .text#{$screen}-600 {
+    font-weight: 600;
+  }
+
+  .text#{$screen}-700 {
+    font-weight: 700;
+  }
+
+  .text#{$screen}-800 {
+    font-weight: 800;
+  }
+
+  .text#{$screen}-900 {
+    font-weight: 900;
+  }
+
+  // text-align
+  .text#{$screen}-left {
+    text-align: left;
+  }
+
+  .text#{$screen}-center {
+    text-align: center;
+  }
+
+  .text#{$screen}-right {
+    text-align: right;
+  }
+
+  .text#{$screen}-justify {
+    text-align: justify;
+  }
+
+  // text-transform
+  .text#{$screen}-upper {
+    text-transform: uppercase;
+  }
+
+  .text#{$screen}-lower {
+    text-transform: lowercase;
+  }
+
+  .text#{$screen}-capitalize {
+    text-transform: capitalize;
+  }
+}

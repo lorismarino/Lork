@@ -10,6 +10,8 @@ $width in $screens {
       @include spacing('');
       @include display('');
       @include flex('');
+      @include colors('');
+      @include texts('');
     }
 
     @else {
@@ -17,6 +19,8 @@ $width in $screens {
         @include spacing($prefix);
         @include display($prefix);
         @include flex($prefix);
+        @include colors($prefix);
+        @include texts($prefix);
       }
     }
   }
