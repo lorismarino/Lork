@@ -9,12 +9,14 @@ $width in $screens {
     @if($prefix=='') {
       @include spacing('');
       @include display('');
+      @include flex('');
     }
 
     @else {
       @media (min-width: $width) {
         @include spacing($prefix);
         @include display($prefix);
+        @include flex($prefix);
       }
     }
   }
