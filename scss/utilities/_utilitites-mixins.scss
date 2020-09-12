@@ -187,3 +187,18 @@
     flex: 1;
   }
 }
+
+@mixin colors($screen) {
+
+  @each $name,
+  $value in $colors {
+    .text#{$screen}-#{$name} {
+      color: $value
+    }
+
+    .bg#{$screen}-#{$name} {
+      background-color: $value
+    }
+  }
+
+}
