@@ -64,3 +64,31 @@
     }
   }
 }
+
+@mixin display($screen) {
+  @for $i from 1 through $spacing-max {
+    .d#{$screen}-block {
+      display: block;
+    }
+
+    .d#{$screen}-flex {
+      display: flex;
+    }
+
+    .d#{$screen}-inline {
+      display: inline;
+    }
+
+    .d#{$screen}-inline-block {
+      display: inline-block;
+    }
+
+    .d#{$screen}-inline-flex {
+      display: inline-flex;
+    }
+
+    .d#{$screen}-none {
+      display: none;
+    }
+  }
+}
