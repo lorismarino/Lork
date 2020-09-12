@@ -17,5 +17,6 @@ components available for the first release :
  - flex grid (v1.0.0)
  - modal (v1.0.0)
  - tabs (v1.0.0)
+ - utilities (v1.0.0)
 
 *Documentation will be available in the next version.*
