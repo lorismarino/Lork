@@ -1,9 +1,9 @@
 // base
-@import 'colors';
-@import 'functions';
-@import 'variables';
-@import 'mixins';
-@import 'reset';
+@import 'default/colors';
+@import 'default/functions';
+@import 'default/variables';
+@import 'default/mixins';
+@import 'default/reset';
 
 // accordion
 @import 'accordion/accordion';
