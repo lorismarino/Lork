@@ -8,19 +8,59 @@ $width in $screens {
   @if($spacing) {
     @if($prefix=='') {
       @include spacing('');
-      @include display('');
-      @include flex('');
-      @include colors('');
-      @include texts('');
     }
 
     @else {
       @media (min-width: $width) {
         @include spacing($prefix);
-        @include display($prefix);
-        @include flex($prefix);
-        @include colors($prefix);
-        @include texts($prefix);
+      }
+    }
+  }
+
+  @if($display) {
+    @if($prefix=='') {
+      @include spacing('');
+    }
+
+    @else {
+      @media (min-width: $width) {
+        @include spacing($prefix);
+      }
+    }
+  }
+
+  @if($flex) {
+    @if($prefix=='') {
+      @include spacing('');
+    }
+
+    @else {
+      @media (min-width: $width) {
+        @include spacing($prefix);
+      }
+    }
+  }
+
+  @if($colors) {
+    @if($prefix=='') {
+      @include spacing('');
+    }
+
+    @else {
+      @media (min-width: $width) {
+        @include spacing($prefix);
+      }
+    }
+  }
+
+  @if($texts) {
+    @if($prefix=='') {
+      @include spacing('');
+    }
+
+    @else {
+      @media (min-width: $width) {
+        @include spacing($prefix);
       }
     }
   }
