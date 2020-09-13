@@ -1,5 +1,17 @@
 @mixin columns($screen) {
 
+  .col-equal#{$screen} {
+    flex: 1 1 0;
+  }
+
+  .col-auto#{$screen} {
+    flex: 0 0 auto;
+  }
+
+  .col#{$screen}-normal {
+    flex: 0 1 0;
+  }
+
   // size of cols
   @for $i from 1 through $cols {
     .col#{$screen}-#{$i} {

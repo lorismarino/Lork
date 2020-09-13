@@ -184,7 +184,15 @@
 
   // flex fill
   .flex#{$screen}-fill {
-    flex: 1;
+    flex: 1 1 0;
+  }
+
+  .flex#{$screen}-auto {
+    flex: 0 0 auto;
+  }
+
+  .flex#{$screen}-normal {
+    flex: 0 1 0;
   }
 }
 
