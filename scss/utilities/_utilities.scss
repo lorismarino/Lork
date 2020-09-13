@@ -19,48 +19,48 @@ $width in $screens {
 
   @if($display) {
     @if($prefix=='') {
-      @include spacing('');
+      @include display('');
     }
 
     @else {
       @media (min-width: $width) {
-        @include spacing($prefix);
+        @include display($prefix);
       }
     }
   }
 
   @if($flex) {
     @if($prefix=='') {
-      @include spacing('');
+      @include flex('');
     }
 
     @else {
       @media (min-width: $width) {
-        @include spacing($prefix);
+        @include flex($prefix);
       }
     }
   }
 
   @if($colors) {
     @if($prefix=='') {
-      @include spacing('');
+      @include colors('');
     }
 
     @else {
       @media (min-width: $width) {
-        @include spacing($prefix);
+        @include colors($prefix);
       }
     }
   }
 
   @if($texts) {
     @if($prefix=='') {
-      @include spacing('');
+      @include texts('');
     }
 
     @else {
       @media (min-width: $width) {
-        @include spacing($prefix);
+        @include texts($prefix);
       }
     }
   }
