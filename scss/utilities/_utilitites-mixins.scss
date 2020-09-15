@@ -89,6 +89,14 @@
   .d#{$screen}-none {
     display: none;
   }
+
+  .height#{$screen}-fill {
+    height: 100%;
+  }
+
+  .height#{$screen}-auto {
+    height: auto;
+  }
 }
 
 @mixin flex($screen) {
