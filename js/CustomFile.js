@@ -20,6 +20,9 @@ class CustomFile {
     this.isButtonPosition = this.$.customFile.dataset.buttonpos
       ? this.$.customFile.dataset.buttonpos
       : 'right'
+    this.type = this.$.customFile.dataset.type
+      ? this.$.customFile.dataset.type
+      : 'file'
     this.isSize = this.$.customFile.dataset.size
   }
 
@@ -59,6 +62,11 @@ class CustomFile {
     this.$.input = document.createElement('input')
     this.$.input.setAttribute('name', this.$.customFile.dataset.name)
     this.$.input.setAttribute('type', 'file')
+    if (this.type === 'files') this.$.input.setAttribute('multiple', true)
+    else if (this.type === 'folder') {
+      this.$.input.setAttribute('webkitdirectory', true)
+      this.$.input.setAttribute('directorys', true)
+    }
     this.$.input.style.display = 'none'
     this.isSize
       ? this.$.container.appendChild(this.$.input)
@@ -84,19 +92,52 @@ class CustomFile {
   }
 
   _events() {
-    this.$.customFile.addEventListener('click', () => {
+    this.$.container.addEventListener('click', () => {
       this.$.input.click()
     })
 
-    this.$.input.addEventListener('change', event => {
-      console.log('te')
-      const file = event.target.files[0]
-      this.$.label.innerText = file.name
-      const bytes = file.size
+    const sizeConvert = size => {
+      const bytes = size
       const sizes = ['bytes', 'kb', 'mb', 'gb', 'tb']
       const i = parseInt(Math.floor(Math.log(bytes) / Math.log(1024)))
       const convert = Math.round(bytes / Math.pow(1024, i), 2)
-      this.$.size.innerText = `${convert} ${sizes[i]}`
+      return `${convert} ${sizes[i]}`
+    }
+
+    this.$.input.addEventListener('change', event => {
+      if (this.type === 'file') {
+        const file = event.target.files[0]
+        this.$.label.innerText = file.name
+        this.$.size.innerText = sizeConvert(file.size)
+      } else {
+        let files = Array.from(event.target.files)
+
+        const $files = document.createElement('div')
+        let size = 0
+
+        files.forEach((file, index) => {
+          const $file = document.createElement('div')
+          $file.innerText = file.name
+          $file.classList.add('custom-file__file')
+
+          const close = document.createElement('div')
+          close.classList.add('custom-file__fileClose')
+          close.innerHTML = '&times;'
+
+          close.addEventListener('click', () => {
+            files.splice(index, 1)
+            $files.removeChild($file)
+          })
+
+          $file.appendChild(close)
+          $files.appendChild($file)
+          size += file.size
+        })
+
+        this.$.size.innerText = sizeConvert(size)
+
+        this.$.customFile.appendChild($files)
+      }
     })
   }
 }

@@ -29,4 +29,14 @@
     margin-top: rem(5);
     text-align: right;
   }
+
+  &__file {
+    display: flex;
+    align-items: center;
+
+    &Close {
+      margin-left: rem(10);
+      cursor: pointer;
+    }
+  }
 }

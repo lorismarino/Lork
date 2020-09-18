@@ -7,9 +7,9 @@ const del = require('del')
 
 // Folders
 const folders = {
-  src: './',
-  dist: './dist/',
-  exemples: './exemples/',
+  src: '',
+  dist: 'dist/',
+  exemples: 'exemples/',
 }
 
 // Messages
