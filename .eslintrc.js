@@ -7,6 +7,7 @@ module.exports = {
     "plugin:prettier/recommended"
   ],
   rules: {
-    "no-new": 0
+    "no-new": 0,
+    "no-undef": 0
   }
 }

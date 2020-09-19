@@ -16,6 +16,7 @@ class CustomFile {
    * Initialize params
    */
   _initParams() {
+    this.label = this.$.customFile.dataset.label
     this.isButton = this.$.customFile.dataset.button
     this.isButtonPosition = this.$.customFile.dataset.buttonpos
       ? this.$.customFile.dataset.buttonpos
@@ -52,7 +53,7 @@ class CustomFile {
 
     // Create label
     this.$.label = document.createElement('p')
-    this.$.label.innerText = this.$.customFile.dataset.label
+    this.$.label.innerText = this.label
     this.$.label.classList.add('custom-file__label')
     this.isSize
       ? this.$.container.appendChild(this.$.label)
@@ -108,14 +109,24 @@ class CustomFile {
       if (this.type === 'file') {
         const file = event.target.files[0]
         this.$.label.innerText = file.name
+        const close = document.createElement('div')
+        close.classList.add('custom-file__fileClose')
+        close.innerHTML = '&times;'
+        this.$.container.insertBefore(close, this.$.button)
+        close.addEventListener('click', event => {
+          event.stopPropagation()
+          this.$.input.value = null
+          this.$.label.innerText = this.label
+          this.$.container.removeChild(close)
+        })
         this.$.size.innerText = sizeConvert(file.size)
       } else {
-        let files = Array.from(event.target.files)
+        let files = event.target.files
 
         const $files = document.createElement('div')
         let size = 0
 
-        files.forEach((file, index) => {
+        Array.from(files).forEach((file, index) => {
           const $file = document.createElement('div')
           $file.innerText = file.name
           $file.classList.add('custom-file__file')
@@ -124,13 +135,18 @@ class CustomFile {
           close.classList.add('custom-file__fileClose')
           close.innerHTML = '&times;'
 
+          $file.appendChild(close)
+          $files.appendChild($file)
+
           close.addEventListener('click', () => {
-            files.splice(index, 1)
+            const newFiles = new DataTransfer()
+            for (let file of files) {
+              if (file !== files[index]) newFiles.items.add(file)
+            }
+            this.$.input.files = newFiles.files
             $files.removeChild($file)
           })
 
-          $file.appendChild(close)
-          $files.appendChild($file)
           size += file.size
         })
 
