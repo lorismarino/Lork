@@ -1,4 +1,4 @@
-# Lork (v1.3.0)
+# Lork (v1.3.1)
 
 ## The small framework for great freedom.
 
@@ -7,8 +7,6 @@ Lork is a modular framework, you can use each component independently or include
 ***To test Lork, get the dist folder and import the css/main.css and js/main.js file.***
 
 ✓ No dependencies.
-
-
 
 - accordion (v1.0.0)
 
@@ -22,7 +20,7 @@ Lork is a modular framework, you can use each component independently or include
 
 - dropdown (v1.0.0)
 
-- forms (1.0.0)
+- forms (1.0.1)
 
 - form validation (1.0.0)
 
