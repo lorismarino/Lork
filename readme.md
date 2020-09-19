@@ -1,4 +1,4 @@
-# Lork (v1.2.1)
+# Lork (v1.3.0)
 
 ## The small framework for great freedom.
 
@@ -14,7 +14,7 @@ Lork is a modular framework, you can use each component independently or include
 
 - carousel (v1.0.1)
 
-- custom file (v1.0.0)
+- custom file (v1.1.0)
 
 - custom range (v1.0.0)
 

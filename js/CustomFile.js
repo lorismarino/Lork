@@ -1,6 +1,6 @@
 /**********
  * CustomFile
- * v1.0.0s
+ * v1.1.0
  */
 
 class CustomFile {
