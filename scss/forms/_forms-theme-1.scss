@@ -1,0 +1,50 @@
+@import 'forms-theme-variables';
+
+.input-group {
+  &:not(:first-child) {
+    margin-top: $input-group-spacing;
+  }
+
+  &__content {
+    background-color: $gray;
+    height: rem(50);
+    position: relative;
+    width: rem(200);
+    border-radius: rem(5);
+
+    label,
+    input {
+      position: absolute;
+      transition: transform 0.3s ease-in-out;
+    }
+
+    label {
+      top: 0;
+      left: rem(5);
+      right: rem(5);
+      transform: translateY(#{rem(25)}) translateY(-50%);
+    }
+
+    input {
+      bottom: 0;
+      left: rem(5);
+      right: rem(5);
+      transform: translateY(-#{rem(25)}) translateY(50%);
+    }
+  }
+
+  &--active {
+    label {
+      transform: translateY(#{rem(5)})
+    }
+
+    input {
+      transform: translateY(-#{rem(5)})
+    }
+  }
+
+  &__error {
+    margin-top: $error-spacing;
+    color: $error-color;
+  }
+}

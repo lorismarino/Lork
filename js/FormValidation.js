@@ -43,6 +43,7 @@ class FormValidation {
       this.$.form.querySelectorAll('.input-group')
     )) {
       const $input = $inputGroup.querySelector('input')
+
       $input.addEventListener('blur', () => {
         if (!this.noInstant) {
           this.validate($inputGroup)
