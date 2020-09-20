@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../dist/css/main.css">
+  <title>header</title>
+</head>
+
+<body>
+  <header class="header">
+    <div class="header__logo">Lork</div>
+    <nav class="header__menu">
+      <ul class="header__menuItems">
+        <li class="header__menuItem">
+          <button class="header__menuItemButton" type="button">Menu 1</button>
+          <div class="header__menuItemSub">
+            <ul class="header__menuItemSubContainer">
+              <li class="header__menuItemSubItem">
+                <a href="#">Submenu 1</a>
+              </li>
+              <li class="header__menuItemSubItem">
+                <a href="#">Submenu 2</a>
+              </li>
+            </ul>
+          </div>
+        </li>
+        <li class="header__menuItem header__menuItem--active">
+          <a class="header__menuItemButton" href="#">Menu 2</a>
+        </li>
+      </ul>
+    </nav>
+    <div class="header__toggle">
+      <p class="header__toggle--open">&equals;</p>
+      <p class="header__toggle--close">&times;</p>
+    </div>
+  </header>
+
+  <script src="../dist/js/main.js"></script>
+</body>
+
+</html>

@@ -4,6 +4,7 @@ import CustomFile from './CustomFile'
 import CustomRange from './CustomRange'
 import CustomSelect from './CustomSelect'
 import Dropdown from './Dropdown'
+import Header from './Header'
 import InputGroup from './InputGroup'
 import FormValidation from './FormValidation'
 import Modal from './Modal'
@@ -39,6 +40,8 @@ const $dropdowns = Array.from(document.querySelectorAll('.dropdown'))
 for (const $dropdown of $dropdowns) {
   new Dropdown($dropdown)
 }
+
+new Header()
 
 const $inputGroups = Array.from(document.querySelectorAll('.input-group'))
 for (const $inputGroup of $inputGroups) {

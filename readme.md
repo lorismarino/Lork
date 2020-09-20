@@ -26,6 +26,8 @@ Lork is a modular framework, you can use each component independently or include
 
 - flex grid (v1.0.0)
 
+- Header (v1.0.0)
+
 - modal (v1.0.0)
 
 - tabs (v1.0.0)
