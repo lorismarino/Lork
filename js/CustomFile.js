@@ -118,6 +118,7 @@ class CustomFile {
           this.$.input.value = null
           this.$.label.innerText = this.label
           this.$.container.removeChild(close)
+          this.$.size.innerText = '0 mb'
         })
         this.$.size.innerText = sizeConvert(file.size)
       } else {
@@ -138,16 +139,21 @@ class CustomFile {
           $file.appendChild(close)
           $files.appendChild($file)
 
+          size += file.size
+
           close.addEventListener('click', () => {
+            let size = 0
             const newFiles = new DataTransfer()
             for (let file of files) {
-              if (file !== files[index]) newFiles.items.add(file)
+              if (file !== files[index]) {
+                newFiles.items.add(file)
+                size += file.size
+              }
             }
+            this.$.size.innerText = sizeConvert(size)
             this.$.input.files = newFiles.files
             $files.removeChild($file)
           })
-
-          size += file.size
         })
 
         this.$.size.innerText = sizeConvert(size)
