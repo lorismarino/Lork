@@ -10,7 +10,6 @@
 
   &__content {
     transform: translateY(100px);
-    transition: transform 0.5s ease-in-out;
   }
 
   &--active {
@@ -19,6 +18,7 @@
 
     .modal {
       &__content {
+        transition: transform 0.5s ease-in-out;
         transform: none;
       }
     }

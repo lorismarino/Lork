@@ -1,3 +1,4 @@
+import './polyfills/Array.from'
 import Accordion from './Accordion'
 import Carousel from './Carousel'
 import CustomFile from './CustomFile'

@@ -8,14 +8,14 @@ class CustomSelect {
     this.$ = {} // Initialize object of DOM elements.
     this.$.customSelect = $customSelect // Add custom-select in DOM objects.
 
-    this._initParams()
-    this._initialize()
+    this.initParams()
+    this.initialize()
   }
 
   /**
    * Initialize params
    */
-  _initParams() {
+  initParams() {
     this.name = this.$.customSelect.dataset.name
     this.isFilters = this.$.customSelect.dataset.filters // Set filters is activated.
     this.isOnMobile = this.$.customSelect.dataset.mobile // Set custom mobile is activated.
@@ -26,51 +26,52 @@ class CustomSelect {
   /**
    * Initialize component.
    */
-  _initialize() {
+  initialize() {
     if (!this.isOnMobile && window.matchMedia('(max-width: 991px)').matches) {
       // Create the select element.
       const $select = document.createElement('select')
       $select.setAttribute('name', this.name)
 
       // Create the default select option.
-      const $option = document.createElement('option')
-      $option.setAttribute('value', '')
-      $option.innerText = this.$.customSelect.dataset.label
-      $select.appendChild($option)
+      const $defaultOption = document.createElement('option')
+      $defaultOption.setAttribute('value', '')
+      $defaultOption.innerText = this.$.customSelect.dataset.label
+      $select.appendChild($defaultOption)
 
       // Create select options.
-      for (const item of this.items) {
+      this.items.forEach(item => {
         const $option = document.createElement('option')
         $option.setAttribute('value', item.value)
         $option.innerText = item.label
         $select.appendChild($option)
-      }
+      })
 
       this.$.customSelect.innerHTML = ''
       this.$.customSelect.appendChild($select)
     } else {
-      if (this.isFilters)
+      if (this.isFilters) {
         this.$.customSelect.classList.add('custom-select--filters')
+      }
 
       // Create the content with elements.
       const $content = document.createElement('div')
       $content.classList.add('custom-select__content')
-
-      for (const item of this.items) {
+      this.items.forEach(item => {
         const $item = document.createElement('div')
         $item.dataset.label = item.label
         $item.dataset.value = item.value
         $item.innerText = item.label
         $item.classList.add('custom-select__item')
         $content.appendChild($item)
-      }
+      })
 
       // Create the button.
       this.$.choose = document.createElement('div')
       this.$.choose.setAttribute('id', this.name)
       this.$.choose.classList.add('custom-select__choose')
-      if (!this.isFilters)
+      if (!this.isFilters) {
         this.$.choose.innerHTML = this.$.customSelect.dataset.label
+      }
 
       // Create wrapping container for content.
       const $container = document.createElement('div')
@@ -99,51 +100,70 @@ class CustomSelect {
       }
     }
 
-    this._events()
+    this.events()
   }
 
-  _events() {
+  events() {
     if (
       (!this.isOnMobile && window.matchMedia('(min-width: 992px)').matches) ||
       this.isOnMobile
     ) {
       this.$.choose.addEventListener('click', () => {
-        this.$.customSelect.classList.toggle('custom-select--open')
+        if (this.$.customSelect.classList.contains('custom-select--open')) {
+          this.$.customSelect.classList.remove('custom-select--open')
+          this.$.customSelect.classList.remove('custom-select--finish')
+        } else {
+          this.$.customSelect.classList.add('custom-select--open')
+          setTimeout(() => {
+            this.$.customSelect.classList.toggle('custom-select--finish')
+          }, 200)
+        }
       })
 
       if (this.isFilters) {
         this.$.filter.addEventListener('click', event => {
           event.stopPropagation()
           this.$.customSelect.classList.add('custom-select--open')
+
+          setTimeout(() => {
+            this.$.customSelect.classList.add('custom-select--finish')
+          }, 200)
         })
       }
 
-      for (const $item of this.$.items) {
+      this.$.items.forEach($item => {
         $item.addEventListener('click', () => {
-          this._changeValue($item)
+          this.changeValue($item)
         })
-      }
+      })
 
       if (this.isFilters) {
         this.$.filter.addEventListener('click', () => {
           this.$.filter.value = ''
           this.$.filter.setAttribute('placeholder', this.virtualLabel)
-          for (const $item of this.$.items) {
-            $item.style.display = 'block'
-          }
+          this.$.items.forEach($item => {
+            const $newItem = $item
+            $newItem.style.display = 'block'
+          })
         })
         this.$.filter.addEventListener('input', () => {
-          for (const $item of this.$.items) {
-            if ($item.innerText.toLowerCase().includes(this.$.filter.value))
-              $item.style.display = 'block'
-            else $item.style.display = 'none'
-          }
+          this.$.items.forEach($item => {
+            if ($item.innerText.toLowerCase().includes(this.$.filter.value)) {
+              const $newItem = $item
+              $newItem.style.display = 'block'
+            } else {
+              const $newItem = $item
+              $newItem.style.display = 'none'
+            }
+          })
         })
       }
 
       document.addEventListener('click', event => {
         if (!this.$.customSelect.contains(event.target)) {
           this.$.customSelect.classList.remove('custom-select--open')
+
+          this.$.customSelect.classList.remove('custom-select--finish')
 
           if (this.isFilters) {
             if (this.$.filter.value === '') {
@@ -158,11 +178,11 @@ class CustomSelect {
     }
 
     window.addEventListener('resize', () => {
-      this._initialize()
+      this.initialize()
     })
   }
 
-  _changeValue($item) {
+  changeValue($item) {
     if (this.isFilters) {
       this.$.filter.value = $item.dataset.label
     } else {
@@ -172,6 +192,7 @@ class CustomSelect {
     this.$.input.value = $item.dataset.value
     this.virtualLabel = $item.dataset.label
     this.$.customSelect.classList.remove('custom-select--open')
+    this.$.customSelect.classList.remove('custom-select--finish')
   }
 }
 

@@ -1,6 +1,6 @@
 /**********
  * Accordion
- * v1.0.0
+ * v1.0.1
  */
 
 class Accordion {
@@ -38,6 +38,7 @@ class Accordion {
       if ($item.classList.contains('accordion__item--open')) {
         const $content = $item.querySelector('.accordion__itemContainer')
         const contentHeight = $content.offsetHeight
+        $content.style.height = `${contentHeight}px`
         this.items.push({ item: $item, height: contentHeight })
       } else {
         const $content = $item.querySelector('.accordion__itemContainer')
