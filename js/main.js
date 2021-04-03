@@ -42,7 +42,7 @@ for (const $dropdown of $dropdowns) {
   new Dropdown($dropdown)
 }
 
-new Header()
+if (document.querySelector('.header')) new Header()
 
 const $inputGroups = Array.from(document.querySelectorAll('.input-group'))
 for (const $inputGroup of $inputGroups) {

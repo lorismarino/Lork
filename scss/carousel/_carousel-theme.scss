@@ -21,7 +21,7 @@
     top: 50%;
     transform: translateY(-50%);
     font-size: rem(50);
-    color: #FFFFFF;
+    color: #ffffff;
     cursor: pointer;
 
     &--left {
@@ -55,12 +55,33 @@
       border-radius: 100%;
 
       &--active {
-        background-color: #FFFFFF;
-        border: 1px solid #FFFFFF;
+        background-color: #ffffff;
+        border: 1px solid #ffffff;
       }
 
       &:not(:first-child) {
         margin-left: rem(10);
+      }
+    }
+  }
+
+  &--multi {
+    .carousel {
+      &__item {
+        flex-basis: 100%;
+
+        @include small {
+          flex-basis: 50%;
+        }
+
+        @include medium {
+          flex-basis: 25%;
+        }
+      }
+
+      &__button {
+        position: static;
+        color: #000;
       }
     }
   }

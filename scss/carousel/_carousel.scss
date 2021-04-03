@@ -10,6 +10,10 @@
     width: 100%;
     position: relative;
     transition: transform 1s ease-in-out;
+
+    &--drag {
+      transition: transform 0.1s linear;
+    }
   }
 
   &__item {

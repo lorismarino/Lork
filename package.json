@@ -1,6 +1,6 @@
 {
   "name": "lork",
-  "version": "1.4.0",
+  "version": "1.5.0",
   "description": "The small framework for great freedom.",
   "author": "Loris Marino <loris.mro@gmail.com> (https://lorismarino.fr)",
   "license": "MIT",
@@ -40,5 +40,8 @@
     "node-sass": "^4.14.1",
     "prettier": "^1.19.1",
     "webpack-stream": "^5.2.1"
+  },
+  "dependencies": {
+    "gsap": "^3.6.1"
   }
 }

@@ -38,10 +38,26 @@ class Carousel {
     this.pagination = this.$.carousel.dataset.pagination
     this.drag = this.$.carousel.dataset.drag
     this.auto = this.$.carousel.dataset.auto
-    this.width = this.$.carousel.offsetWidth
+    this.mobileNumber = 1 || this.$.carousel.dataset.mobileNumber
+    this.tabletNumber = 2 || this.$.carousel.dataset.tabletNumber
+    this.laptopNumber = 4 || this.$.carousel.dataset.laptopNumber
     this.numberItems = Array.from(
       this.$.carousel.querySelectorAll('.carousel__item')
     ).length
+
+    if (this.type !== 'multi') {
+      this.width = this.$.carousel.offsetWidth
+      this.screenNumber = 1
+    } else {
+      this.width = this.$.carousel.querySelector('.carousel__item').offsetWidth
+      if (window.matchMedia('(min-width: 992px)').matches) {
+        this.screenNumber = this.laptopNumber
+      } else if (window.matchMedia('(min-width: 768px)').matches) {
+        this.screenNumber = this.tabletNumber
+      } else {
+        this.screenNumber = this.mobileNumber
+      }
+    }
   }
 
   /**
@@ -158,6 +174,7 @@ class Carousel {
         })
 
         document.addEventListener('mouseup', event => {
+          this.$.items.classList.remove('carousel__items--drag')
           setTimeout(() => {
             this.pressItems = false
 
@@ -195,6 +212,7 @@ class Carousel {
   }
 
   _dragItems(clientX) {
+    this.$.items.classList.add('carousel__items--drag')
     if (this.pressItems) {
       if (clientX > this.actualPosition) {
         this.translate = clientX - this.actualPosition
@@ -215,16 +233,13 @@ class Carousel {
 
               this.dragCretaedItem = true
             }
-
-            TweenLite.to(this.$.items, 0.1, { x: this.translate })
+            this.$.items.style.transform = `translateX(${this.translate}px)`
           }
         } else {
           if (this.activeItem > 1) {
-            TweenLite.to(this.$.items, 0.1, {
-              x:
-                (this.activeItem - 1) * -this.$.carousel.offsetWidth +
-                this.translate
-            })
+            this.$.items.style.transform = `translateX(${(this.activeItem - 1) *
+              -this.$.carousel.offsetWidth +
+              this.translate}px)`
           }
         }
       } else if (clientX < this.actualPosition) {
@@ -232,11 +247,9 @@ class Carousel {
 
         if (this.type === 'infinite') {
           if (this.activeItem < this.numberItems) {
-            TweenLite.to(this.$.items, 0.1, {
-              x:
-                (this.activeItem - 1) * -this.$.carousel.offsetWidth -
-                this.translate
-            })
+            this.$.items.style.transform = `translateX(${(this.activeItem - 1) *
+              -this.$.carousel.offsetWidth -
+              this.translate}px)`
           } else if (this.activeItem === this.numberItems) {
             if (!this.dragCretaedItem) {
               this.dragCretaedItem = true
@@ -246,19 +259,16 @@ class Carousel {
               const duplicateFirstItem = $firstItem.cloneNode(true)
               this.$.items.appendChild(duplicateFirstItem)
             }
-            TweenLite.to(this.$.items, 0.1, {
-              x:
-                (this.numberItems - 1) * -this.$.carousel.offsetWidth -
-                this.translate
-            })
+            this.$.items.style.transform = `translateX(${(this.numberItems -
+              1) *
+              -this.$.carousel.offsetWidth -
+              this.translate}px)`
           }
         } else {
           if (this.activeItem < this.numberItems) {
-            TweenLite.to(this.$.items, 0.1, {
-              x:
-                (this.activeItem - 1) * -this.$.carousel.offsetWidth -
-                this.translate
-            })
+            this.$.items.style.transform = `translateX(${(this.activeItem - 1) *
+              -this.$.carousel.offsetWidth -
+              this.translate}px)`
           }
         }
       }
@@ -266,7 +276,7 @@ class Carousel {
   }
 
   _moveLeft() {
-    if (this.type === 'normal') {
+    if (this.type === 'normal' || this.type === 'multi') {
       if (this.activeItem > 1) {
         this._moveItems(this.activeItem - 2, 'left')
         this.activeItem--
@@ -303,8 +313,9 @@ class Carousel {
   }
 
   _moveRight() {
-    if (this.type === 'normal') {
-      if (this.activeItem < this.numberItems) {
+    if (this.type === 'normal' || this.type === 'multi') {
+      if (this.activeItem < this.numberItems - (this.screenNumber - 1)) {
+        console.log('ok')
         this._moveItems(this.activeItem, 'right')
         this.activeItem++
       }
@@ -363,34 +374,36 @@ class Carousel {
       }
     }, 1000)
 
-    if (position === 'left') {
-      this.$.carousel
-        .querySelector('.carousel__paginationBullet--active')
-        .classList.remove('carousel__paginationBullet--active')
-      if (this.activeItem === 1)
+    if (this.pagination) {
+      if (position === 'left') {
         this.$.carousel
-          .querySelector('.carousel__paginationBullet:last-child')
-          .classList.add('carousel__paginationBullet--active')
-      else
+          .querySelector('.carousel__paginationBullet--active')
+          .classList.remove('carousel__paginationBullet--active')
+        if (this.activeItem === 1)
+          this.$.carousel
+            .querySelector('.carousel__paginationBullet:last-child')
+            .classList.add('carousel__paginationBullet--active')
+        else
+          this.$.carousel
+            .querySelector(
+              `.carousel__paginationBullet:nth-child(${this.activeItem - 1})`
+            )
+            .classList.add('carousel__paginationBullet--active')
+      } else if (position === 'right') {
         this.$.carousel
-          .querySelector(
-            `.carousel__paginationBullet:nth-child(${this.activeItem - 1})`
-          )
-          .classList.add('carousel__paginationBullet--active')
-    } else if (position === 'right') {
-      this.$.carousel
-        .querySelector('.carousel__paginationBullet--active')
-        .classList.remove('carousel__paginationBullet--active')
-      if (this.activeItem === this.numberItems)
-        this.$.carousel
-          .querySelector('.carousel__paginationBullet')
-          .classList.add('carousel__paginationBullet--active')
-      else
-        this.$.carousel
-          .querySelector(
-            `.carousel__paginationBullet:nth-child(${this.activeItem + 1})`
-          )
-          .classList.add('carousel__paginationBullet--active')
+          .querySelector('.carousel__paginationBullet--active')
+          .classList.remove('carousel__paginationBullet--active')
+        if (this.activeItem === this.numberItems)
+          this.$.carousel
+            .querySelector('.carousel__paginationBullet')
+            .classList.add('carousel__paginationBullet--active')
+        else
+          this.$.carousel
+            .querySelector(
+              `.carousel__paginationBullet:nth-child(${this.activeItem + 1})`
+            )
+            .classList.add('carousel__paginationBullet--active')
+      }
     }
   }
 }
