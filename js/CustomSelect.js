@@ -1,6 +1,6 @@
 /**********
  * CustomSelect
- * v1.0.0
+ * v1.1.0
  */
 
 class CustomSelect {
@@ -16,17 +16,26 @@ class CustomSelect {
    * Initialize params
    */
   initParams() {
-    this.name = this.$.customSelect.dataset.name
+    this.name = this.$.customSelect.getAttribute('name')
     this.isFilters = this.$.customSelect.dataset.filters // Set filters is activated.
     this.isOnMobile = this.$.customSelect.dataset.mobile // Set custom mobile is activated.
+    this.defaultLabel = this.$.customSelect.dataset.label // Set default label.
     this.virtualLabel = this.$.customSelect.dataset.label // Set activated label.
-    this.items = JSON.parse(this.$.customSelect.dataset.items) // Create JSON object with items.
+    this.items = Array.from(this.$.customSelect.querySelectorAll('option')) // Get items.
   }
 
   /**
    * Initialize component.
    */
   initialize() {
+    const $createCustomSelect = document.createElement('div')
+    $createCustomSelect.classList.add('custom-select')
+    this.$.customSelect.parentNode.replaceChild(
+      $createCustomSelect,
+      this.$.customSelect
+    )
+    this.$.customSelect = $createCustomSelect
+    console.log(this.$.customSelect)
     if (!this.isOnMobile && window.matchMedia('(max-width: 991px)').matches) {
       // Create the select element.
       const $select = document.createElement('select')
@@ -35,14 +44,14 @@ class CustomSelect {
       // Create the default select option.
       const $defaultOption = document.createElement('option')
       $defaultOption.setAttribute('value', '')
-      $defaultOption.innerText = this.$.customSelect.dataset.label
+      $defaultOption.innerText = this.defaultLabel
       $select.appendChild($defaultOption)
 
       // Create select options.
       this.items.forEach(item => {
         const $option = document.createElement('option')
-        $option.setAttribute('value', item.value)
-        $option.innerText = item.label
+        $option.setAttribute('value', item.getAttribute('value'))
+        $option.innerText = item.innerText
         $select.appendChild($option)
       })
 
@@ -58,9 +67,9 @@ class CustomSelect {
       $content.classList.add('custom-select__content')
       this.items.forEach(item => {
         const $item = document.createElement('div')
-        $item.dataset.label = item.label
-        $item.dataset.value = item.value
-        $item.innerText = item.label
+        $item.dataset.label = item.innerText
+        $item.dataset.value = item.getAttribute('value')
+        $item.innerText = item.innerText
         $item.classList.add('custom-select__item')
         $content.appendChild($item)
       })
@@ -70,7 +79,7 @@ class CustomSelect {
       this.$.choose.setAttribute('id', this.name)
       this.$.choose.classList.add('custom-select__choose')
       if (!this.isFilters) {
-        this.$.choose.innerHTML = this.$.customSelect.dataset.label
+        this.$.choose.innerHTML = this.defaultLabel
       }
 
       // Create wrapping container for content.
@@ -95,7 +104,7 @@ class CustomSelect {
       // Create the filter input.
       if (this.isFilters) {
         this.$.filter = document.createElement('input')
-        this.$.filter.value = this.$.customSelect.dataset.label
+        this.$.filter.value = this.defaultLabel
         this.$.choose.appendChild(this.$.filter)
       }
     }
@@ -184,13 +193,13 @@ class CustomSelect {
 
   changeValue($item) {
     if (this.isFilters) {
-      this.$.filter.value = $item.dataset.label
+      this.$.filter.value = $item.innerText
     } else {
-      this.$.choose.innerText = $item.dataset.label
+      this.$.choose.innerText = $item.innerText
     }
 
-    this.$.input.value = $item.dataset.value
-    this.virtualLabel = $item.dataset.label
+    this.$.input.value = $item.getAttribute('value')
+    this.virtualLabel = $item.innerText
     this.$.customSelect.classList.remove('custom-select--open')
     this.$.customSelect.classList.remove('custom-select--finish')
   }
