@@ -9,6 +9,9 @@
 @import 'accordion/accordion';
 @import 'accordion/accordion-theme';
 
+// animation
+@import 'animation/animation-theme';
+
 // accordion
 @import 'carousel/carousel';
 @import 'carousel/carousel-theme';
@@ -17,7 +20,6 @@
 @import 'custom-file/custom-file-theme';
 
 // custom range
-@import 'custom-range/custom-range';
 @import 'custom-range/custom-range-theme';
 
 // custom select
@@ -27,7 +29,6 @@
 // dropdown
 @import 'dropdown/dropdown';
 @import 'dropdown/dropdown-theme';
-
 
 // flex-grid
 @import 'flex-grid/flex-grid-mixins';

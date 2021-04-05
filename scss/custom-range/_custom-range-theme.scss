@@ -1,30 +1,71 @@
 @import 'custom-range-variables';
 
 .custom-range {
-  width: $custom-range-width;
-  cursor: pointer;
-
-  &__bar {
-    height: $custom-range-bar-height;
-    border-radius: calc(#{$custom-range-bar-height} / 2);
-    position: absolute;
-    top: calc(50% - (#{$custom-range-bar-height} / 2));
-
-    &--background {
-      background-color: $custom-range-bar-background;
-    }
-
-    &--plain {
-      background-color: $custom-range-plain-bar-background;
-      transition: transform 0.3s ease-in-out;
-    }
+  @mixin thumb {
+    appearance: none;
+    width: rem(20);
+    height: rem(20);
+    boder: none;
+    border-radius: 100%;
+    box-shadow: -400px 0 0 395px $custom-range-plain-bar-background,
+      inset 0 0 0 10px $custom-range-cursor-background;
   }
 
-  &__cursor {
-    transition: transform 0.3s ease-in-out;
-    width: $custom-range-cursor-width;
-    height: $custom-range-cursor-height;
-    border-radius: 100%;
-    background-color: $custom-range-cursor-background;
+  @mixin track {
+    color: transparent;
+    border: none;
+    height: rem(20);
+    background-color: $custom-range-bar-background;
+  }
+
+  display: flex;
+  align-items: center;
+  margin: rem(50);
+
+  &__total {
+    margin-left: rem(20);
+  }
+
+  input {
+    -webkit-appearance: none;
+    overflow: hidden;
+    height: rem(20);
+    width: $custom-range-width;
+    border-radius: rem(10);
+    cursor: pointer;
+
+    &::-webkit-slider-runnable-track {
+      @include track;
+    }
+    &::-moz-range-track {
+      @include track;
+    }
+    &::-ms-track {
+      @include track;
+    }
+
+    &::-webkit-slider-thumb {
+      @include thumb;
+    }
+    &::-moz-range-thumb {
+      @include thumb;
+    }
+    &::-ms-thumb {
+      @include thumb;
+    }
   }
 }
+
+// input[type='range'] {
+//   -webkit-appearance: none;
+// }
+
+// input[type='range']::-ms-track {
+//   width: 100%;
+//   height: 8.4px;
+//   cursor: pointer;
+
+//   border-color: transparent;
+//   border-width: 16px 0;
+//   color: transparent;
+// }

@@ -1,5 +1,6 @@
 import './polyfills/Array.from'
 import Accordion from './Accordion'
+import Animation from './Animation'
 import Carousel from './Carousel'
 import CustomFile from './CustomFile'
 import CustomRange from './CustomRange'
@@ -16,6 +17,8 @@ const $accordions = Array.from(document.querySelectorAll('.accordion'))
 for (const $accordion of $accordions) {
   new Accordion($accordion)
 }
+
+new Animation()
 
 const $carousels = Array.from(document.querySelectorAll('.carousel'))
 for (const $carousel of $carousels) {

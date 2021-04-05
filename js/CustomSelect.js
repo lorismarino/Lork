@@ -28,6 +28,7 @@ class CustomSelect {
    * Initialize component.
    */
   initialize() {
+    // create component
     const $createCustomSelect = document.createElement('div')
     $createCustomSelect.classList.add('custom-select')
     this.$.customSelect.parentNode.replaceChild(
@@ -35,7 +36,7 @@ class CustomSelect {
       this.$.customSelect
     )
     this.$.customSelect = $createCustomSelect
-    console.log(this.$.customSelect)
+
     if (!this.isOnMobile && window.matchMedia('(max-width: 991px)').matches) {
       // Create the select element.
       const $select = document.createElement('select')

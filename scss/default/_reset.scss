@@ -1,39 +1,39 @@
+/**
+  * reset
+*/
+
 * {
-  padding: 0;
-  margin: 0;
+  background-color: transparent;
+  border: 0;
   box-sizing: border-box;
-  font: inherit;
   color: inherit;
-}
-
-ul {
-  list-style: none;
-}
-
-a {
-  text-decoration: none;
-}
-
-button {
-  cursor: pointer;
-}
-
-button,
-input,
-textarea {
-  appearance: none;
-  border: none;
-  background: transparent;
   font: inherit;
-  color: inherit;
+  margin: 0;
+  padding: 0;
 
   &:focus {
     outline: none;
   }
 }
 
-.keyboard {
+a {
+  text-decoration: none;
+}
 
+ul {
+  list-style: none;
+}
+
+button {
+  cursor: pointer;
+}
+
+svg {
+  fill: currentColor;
+  stroke: currentColor;
+}
+
+.keyboard {
   button,
   input,
   textarea {

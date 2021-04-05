@@ -4,21 +4,23 @@
 
 Lork is a modular framework, you can use each component independently or include the bundle.
 
-***To test Lork, get the dist folder and import the css/main.css and js/main.js file.***
+**_To test Lork, get the dist folder and import the css/main.css and js/main.js file._**
 
 ✓ No dependencies.
 
 - accordion (v1.0.0)
 
+- animation (v1.0.0)
+
 - carousel (v1.0.1)
 
 - custom file (v1.1.0)
 
-- custom range (v1.0.0)
+- custom range (v1.1.0)
 
-- custom select (v1.0.0)
+- custom select (v1.1.0)
 
-- dropdown (v1.0.0)
+- dropdown (v1.1.0)
 
 - forms (1.0.1)
 
@@ -34,6 +36,4 @@ Lork is a modular framework, you can use each component independently or include
 
 - utilities (v1.0.1)
 
-
-
-*Documentation will be available in the next version.*
+_Documentation will be available in the next version._
