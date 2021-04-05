@@ -7,8 +7,9 @@
     height: rem(20);
     boder: none;
     border-radius: 100%;
-    box-shadow: -400px 0 0 395px $custom-range-plain-bar-background,
-      inset 0 0 0 10px $custom-range-cursor-background;
+    box-shadow: -100vw 0 0 calc(100vw - #{rem(5)})
+        $custom-range-plain-bar-background,
+      inset 0 0 0 #{rem(10)} $custom-range-cursor-background;
   }
 
   @mixin track {
@@ -53,19 +54,12 @@
     &::-ms-thumb {
       @include thumb;
     }
+
+    &::-ms-fill-lower {
+      background-color: $custom-range-plain-bar-background;
+    }
+    &::-ms-fill-upper {
+      background-color: $custom-range-bar-background;
+    }
   }
 }
-
-// input[type='range'] {
-//   -webkit-appearance: none;
-// }
-
-// input[type='range']::-ms-track {
-//   width: 100%;
-//   height: 8.4px;
-//   cursor: pointer;
-
-//   border-color: transparent;
-//   border-width: 16px 0;
-//   color: transparent;
-// }

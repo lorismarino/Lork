@@ -1,4 +1,5 @@
 import './polyfills/Array.from'
+import './polyfills/intersectionObserver'
 import Accordion from './Accordion'
 import Animation from './Animation'
 import Carousel from './Carousel'

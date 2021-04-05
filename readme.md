@@ -16,7 +16,7 @@ Lork is a modular framework, you can use each component independently or include
 
 - custom file (v1.1.0)
 
-- custom range (v1.1.0)
+- custom range (v1.1.1)
 
 - custom select (v1.1.0)
 

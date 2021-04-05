@@ -1,6 +1,6 @@
 /**********
  * CustomRange
- * v1.0.0
+ * v1.1.1
  */
 
 class CustomRange {
@@ -56,7 +56,12 @@ class CustomRange {
 
   _events() {
     this.$.input.addEventListener('input', () => {
-      console.log('ch')
+      this.$.totalView.innerText = (
+        this.$.input.value * this.step
+      ).toLocaleString()
+    })
+
+    this.$.input.addEventListener('change', () => {
       this.$.totalView.innerText = (
         this.$.input.value * this.step
       ).toLocaleString()
