@@ -46,7 +46,7 @@ class Dropdown {
     const $container = document.createElement('div')
     $container.classList.add('dropdown__container')
     $container.appendChild($content)
-    $container.setAttribute('aria-labelledby', this.name)
+    $container.setAttribute('aria-labelledby', `#${this.name}`)
     this.$.dropdown.innerHTML = ''
     this.$.dropdown.appendChild(this.$.choose)
     this.$.dropdown.appendChild($container)

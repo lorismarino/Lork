@@ -1,4 +1,8 @@
 .switch {
+  display: inline-flex;
+  align-items: center;
+
+  &__container {
   width: rem(60);
   height: rem(30);
   border-radius: rem(15);
@@ -6,16 +10,6 @@
   position: relative;
   border: 1px solid $gray;
   cursor: pointer;
-
-  &__on,
-  &__off {
-    opacity: 0;
-    pointer-events: none;
-  }
-
-  &__off {
-    display: none;
-  }
 
   &::before {
     content: "";
@@ -29,11 +23,27 @@
     transition: transform 0.2s ease-in-out;
     will-change: transform;
   }
+  }
+
+  &__on,
+  &__off {
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  &__off {
+    display: none;
+  }
+
+  &__label {
+    margin-left: rem(20);
+    cursor: pointer;
+  }
 
   &--active {
-    border: 1px solid $primary;
+    .switch__container {
+      border: 1px solid $primary;
 
-    &.switch {
       &::before {
         background-color: $primary;
         transform: translateX(#{rem(30)});
