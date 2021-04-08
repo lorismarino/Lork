@@ -67,7 +67,6 @@ class CustomSelect {
       // Create the content with elements.
       const $content = document.createElement('ul')
       $content.classList.add('custom-select__content')
-      $content.setAttribute('aria-labelledby', `${this.name}`)
       this.items.forEach(item => {
         const $item = document.createElement('li')
         $item.dataset.label = item.innerText
