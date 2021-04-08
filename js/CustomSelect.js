@@ -30,7 +30,7 @@ class CustomSelect {
   initialize() {
     // create component
     const $createCustomSelect = document.createElement('div')
-    $createCustomSelect.setAttribute('tabindex', '0')
+    // $createCustomSelect.setAttribute('tabindex', '0')
     $createCustomSelect.classList.add('custom-select')
     this.$.customSelect.parentNode.replaceChild(
       $createCustomSelect,
@@ -52,7 +52,8 @@ class CustomSelect {
       // Create select options.
       this.items.forEach(item => {
         const $option = document.createElement('option')
-        $option.setAttribute('value', item.getAttribute('value'))
+        $option.setAttribute('value', item.value)
+        $option.setAttribute('role', 'button')
         $option.innerText = item.innerText
         $select.appendChild($option)
       })
@@ -70,7 +71,8 @@ class CustomSelect {
       this.items.forEach(item => {
         const $item = document.createElement('li')
         $item.dataset.label = item.innerText
-        $item.dataset.value = item.getAttribute('value')
+        $item.dataset.value = item.value
+        $item.setAttribute('role', 'button')
         $item.setAttribute('tabindex', '0')
         $item.innerText = item.innerText
         $item.classList.add('custom-select__item')
@@ -78,7 +80,8 @@ class CustomSelect {
       })
 
       // Create the button.
-      this.$.choose = document.createElement('div')
+      this.$.choose = document.createElement('button')
+      this.$.choose.setAttribute('type', 'button')
       this.$.choose.setAttribute('id', this.name)
       this.$.choose.classList.add('custom-select__choose')
       if (!this.isFilters) {
@@ -115,18 +118,6 @@ class CustomSelect {
     this.events()
   }
 
-  toggleCustomSelect() {
-    if (this.$.customSelect.classList.contains('custom-select--open')) {
-      this.$.customSelect.classList.remove('custom-select--open')
-      this.$.customSelect.classList.remove('custom-select--finish')
-    } else {
-      this.$.customSelect.classList.add('custom-select--open')
-      setTimeout(() => {
-        this.$.customSelect.classList.toggle('custom-select--finish')
-      }, 200)
-    }
-  }
-
   setPosition() {
     if (
       window.innerHeight -
@@ -142,12 +133,6 @@ class CustomSelect {
   }
 
   events() {
-    // keyboard navigation
-    this.$.customSelect.addEventListener('keyup', event => {
-      event.preventDefault()
-      if (event.code === 'Enter') this.toggleCustomSelect()
-    })
-
     document.addEventListener('scroll', () => {
       this.setPosition()
     })
@@ -157,7 +142,15 @@ class CustomSelect {
       this.isOnMobile
     ) {
       this.$.choose.addEventListener('click', () => {
-        this.toggleCustomSelect()
+        if (this.$.customSelect.classList.contains('custom-select--open')) {
+          this.$.customSelect.classList.remove('custom-select--open')
+          this.$.customSelect.classList.remove('custom-select--finish')
+        } else {
+          this.$.customSelect.classList.add('custom-select--open')
+          setTimeout(() => {
+            this.$.customSelect.classList.toggle('custom-select--finish')
+          }, 200)
+        }
       })
 
       if (this.isFilters) {

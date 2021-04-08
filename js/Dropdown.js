@@ -37,7 +37,8 @@ class Dropdown {
     }
 
     // Create the button.
-    this.$.choose = document.createElement('div')
+    this.$.choose = document.createElement('button')
+    this.$.choose.setAttribute('type', 'button')
     this.$.choose.classList.add('dropdown__choose')
     this.$.choose.innerHTML = this.$.dropdown.dataset.label
 
@@ -46,7 +47,6 @@ class Dropdown {
     $container.classList.add('dropdown__container')
     $container.appendChild($content)
     this.$.dropdown.innerHTML = ''
-    this.$.dropdown.setAttribute('tabindex', '0')
     this.$.dropdown.appendChild(this.$.choose)
     this.$.dropdown.appendChild($container)
 
@@ -68,13 +68,6 @@ class Dropdown {
   }
 
   _events() {
-    // keyboard navigation
-    this.$.dropdown.addEventListener('keyup', event => {
-      event.preventDefault()
-      if (event.code === 'Enter')
-        this.$.dropdown.classList.toggle('dropdown--open')
-    })
-
     document.addEventListener('scroll', () => {
       this.setPosition()
     })
