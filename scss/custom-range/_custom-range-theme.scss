@@ -19,12 +19,17 @@
 
   input {
     background: linear-gradient(to right, $custom-range-plain-bar-background 0%, $custom-range-plain-bar-background 50%, $custom-range-bar-background 50%, $custom-range-bar-background 100%);
-    border-radius: rem(10);
+    border-radius: rem(7.5);
     width: 356px;
     -webkit-appearance: none;
-     height: rem(20);
+     height: rem(15);
      width: $custom-range-width;
      cursor: pointer;
+
+    @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+      background: transparent;
+      height: rem(25);
+    }
 
     &::-webkit-slider-thumb {
       @include thumb;
@@ -34,6 +39,23 @@
     }
     &::-ms-thumb {
       @include thumb;
+    }
+
+    &::-ms-track {
+      color: transparent;
+      height:rem(15);
+      border: none;
+    }
+
+    &::-ms-fill-lower {
+      border-top-left-radius: rem(7.5);
+      border-bottom-left-radius: rem(7.5);
+      background-color: $custom-range-plain-bar-background
+    }
+    &::-ms-fill-upper {
+      background-color: $custom-range-bar-background;
+      border-top-right-radius: rem(7.5);
+      border-bottom-right-radius: rem(7.5);
     }
   }
 }
