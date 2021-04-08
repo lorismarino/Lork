@@ -30,6 +30,7 @@ class CustomSelect {
   initialize() {
     // create component
     const $createCustomSelect = document.createElement('div')
+    $createCustomSelect.setAttribute('tabindex', '0')
     $createCustomSelect.classList.add('custom-select')
     this.$.customSelect.parentNode.replaceChild(
       $createCustomSelect,
@@ -64,12 +65,14 @@ class CustomSelect {
       }
 
       // Create the content with elements.
-      const $content = document.createElement('div')
+      const $content = document.createElement('ul')
       $content.classList.add('custom-select__content')
+      $content.setAttribute('aria-labelledby', this.name)
       this.items.forEach(item => {
-        const $item = document.createElement('div')
+        const $item = document.createElement('li')
         $item.dataset.label = item.innerText
         $item.dataset.value = item.getAttribute('value')
+        $item.setAttribute('tabindex', '0')
         $item.innerText = item.innerText
         $item.classList.add('custom-select__item')
         $content.appendChild($item)
@@ -86,7 +89,6 @@ class CustomSelect {
       // Create wrapping container for content.
       const $container = document.createElement('div')
       $container.classList.add('custom-select__container')
-      $container.setAttribute('aria-labelledby', this.name)
       $container.appendChild($content)
       this.$.customSelect.innerHTML = ''
       this.$.customSelect.appendChild(this.$.choose)
@@ -113,21 +115,31 @@ class CustomSelect {
     this.events()
   }
 
+  toggleCustomSelect() {
+    if (this.$.customSelect.classList.contains('custom-select--open')) {
+      this.$.customSelect.classList.remove('custom-select--open')
+      this.$.customSelect.classList.remove('custom-select--finish')
+    } else {
+      this.$.customSelect.classList.add('custom-select--open')
+      setTimeout(() => {
+        this.$.customSelect.classList.toggle('custom-select--finish')
+      }, 200)
+    }
+  }
+
   events() {
+    // keyboard navigation
+    this.$.customSelect.addEventListener('keyup', event => {
+      event.preventDefault()
+      if (event.code === 'Enter') this.toggleCustomSelect()
+    })
+
     if (
       (!this.isOnMobile && window.matchMedia('(min-width: 992px)').matches) ||
       this.isOnMobile
     ) {
       this.$.choose.addEventListener('click', () => {
-        if (this.$.customSelect.classList.contains('custom-select--open')) {
-          this.$.customSelect.classList.remove('custom-select--open')
-          this.$.customSelect.classList.remove('custom-select--finish')
-        } else {
-          this.$.customSelect.classList.add('custom-select--open')
-          setTimeout(() => {
-            this.$.customSelect.classList.toggle('custom-select--finish')
-          }, 200)
-        }
+        this.toggleCustomSelect()
       })
 
       if (this.isFilters) {
@@ -144,6 +156,13 @@ class CustomSelect {
       this.$.items.forEach($item => {
         $item.addEventListener('click', () => {
           this.changeValue($item)
+        })
+
+        // keyboard navigation
+        $item.addEventListener('keyup', event => {
+          event.preventDefault()
+          event.stopPropagation()
+          if (event.code === 'Enter') this.changeValue($item)
         })
       })
 

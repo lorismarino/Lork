@@ -66,6 +66,10 @@ class CustomRange {
         this.$.input.value * this.step
       ).toLocaleString()
     })
+
+    this.$.input.addEventListener('input', () => {
+      this.$.input.style.background = `linear-gradient(to right, #4AA691 0%, #4AA691 ${this.$.input.value}%, #CCCCCC ${this.$.input.value}%, #CCCCCC 100%)`
+    })
   }
 }
 

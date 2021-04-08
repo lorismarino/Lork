@@ -11,6 +11,7 @@ import Header from './Header'
 import InputGroup from './InputGroup'
 import FormValidation from './FormValidation'
 import Modal from './Modal'
+import Switch from './Switch'
 import Reset from './Reset'
 import Tabs from './Tabs'
 
@@ -61,6 +62,11 @@ for (const $form of $forms) {
 const $modals = Array.from(document.querySelectorAll('.modal'))
 for (const $modal of $modals) {
   new Modal($modal)
+}
+
+const $switchs = Array.from(document.querySelectorAll('.switch'))
+for (const $switch of $switchs) {
+  new Switch($switch)
 }
 
 new Reset()

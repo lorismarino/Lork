@@ -18,8 +18,6 @@ class Dropdown {
   _initParams() {
     this.isOnMobile = this.$.dropdown.dataset.mobile // Set custom mobile is activated.
     this.name = this.$.dropdown.dataset.name
-    this.items =
-      this.type === 'link' ? JSON.parse(this.$.dropdown.dataset.items) : null // Create JSON object with items.
   }
 
   /**
