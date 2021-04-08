@@ -40,21 +40,45 @@ class Dropdown {
     this.$.choose = document.createElement('div')
     this.$.choose.classList.add('dropdown__choose')
     this.$.choose.innerHTML = this.$.dropdown.dataset.label
-    this.$.choose.setAttribute('id', this.name)
 
     // Create wrapping container for content.
     const $container = document.createElement('div')
     $container.classList.add('dropdown__container')
     $container.appendChild($content)
-    $container.setAttribute('aria-labelledby', `#${this.name}`)
     this.$.dropdown.innerHTML = ''
+    this.$.dropdown.setAttribute('tabindex', '0')
     this.$.dropdown.appendChild(this.$.choose)
     this.$.dropdown.appendChild($container)
 
+    this.setPosition()
     this._events()
   }
 
+  setPosition() {
+    if (
+      window.innerHeight -
+        (this.$.dropdown.getBoundingClientRect().top +
+          this.$.dropdown.querySelector('.dropdown__choose').offsetHeight) <
+      this.$.dropdown.querySelector('.dropdown__content').offsetHeight
+    ) {
+      this.$.dropdown.classList.add('dropdown--top')
+    } else {
+      this.$.dropdown.classList.remove('dropdown--top')
+    }
+  }
+
   _events() {
+    // keyboard navigation
+    this.$.dropdown.addEventListener('keyup', event => {
+      event.preventDefault()
+      if (event.code === 'Enter')
+        this.$.dropdown.classList.toggle('dropdown--open')
+    })
+
+    document.addEventListener('scroll', () => {
+      this.setPosition()
+    })
+
     this.$.choose.addEventListener('click', () => {
       this.$.dropdown.classList.toggle('dropdown--open')
     })

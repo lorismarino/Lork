@@ -15,3 +15,4 @@ $screens: (('', '', ''),
   ('-l', $l, $l-width)) !default;
 
 $container-padding: 15px !default;
+$focus: inset 0 0 3px rgba(#000, 0.3);

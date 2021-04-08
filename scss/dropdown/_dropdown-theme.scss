@@ -4,6 +4,12 @@
   width: $dropdown-width;
   height: $dropdown-height;
 
+  &:focus-visible {
+    .dropdown__choose {
+      box-shadow: $focus;
+    }
+  }
+
   select {
     width: $dropdown-width;
     height: $dropdown-height;
@@ -51,6 +57,15 @@
 
     &:not(:first-child) {
       margin-top: rem(10);
+    }
+  }
+
+  &--top {
+    .dropdown {
+      &__content {
+        border-top: 1px solid $dropdown-border-color;
+        border-bottom: 0;
+      }
     }
   }
 

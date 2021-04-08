@@ -112,6 +112,7 @@ class CustomSelect {
       }
     }
 
+    this.setPosition()
     this.events()
   }
 
@@ -127,11 +128,29 @@ class CustomSelect {
     }
   }
 
+  setPosition() {
+    if (
+      window.innerHeight -
+        (this.$.customSelect.getBoundingClientRect().top +
+          this.$.customSelect.querySelector('.custom-select__choose')
+            .offsetHeight) <
+      this.$.customSelect.querySelector('.custom-select__content').offsetHeight
+    ) {
+      this.$.customSelect.classList.add('custom-select--top')
+    } else {
+      this.$.customSelect.classList.remove('custom-select--top')
+    }
+  }
+
   events() {
     // keyboard navigation
     this.$.customSelect.addEventListener('keyup', event => {
       event.preventDefault()
       if (event.code === 'Enter') this.toggleCustomSelect()
+    })
+
+    document.addEventListener('scroll', () => {
+      this.setPosition()
     })
 
     if (
@@ -206,9 +225,9 @@ class CustomSelect {
       })
     }
 
-    window.addEventListener('resize', () => {
-      this.initialize()
-    })
+    // window.addEventListener('resize', () => {
+    //   this.initialize()
+    // })
   }
 
   changeValue($item) {

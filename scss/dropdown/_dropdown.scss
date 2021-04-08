@@ -15,6 +15,17 @@
     transition: transform 0.3s ease-in-out;
   }
 
+  &--top {
+    .dropdown__container {
+      top: auto;
+      bottom: 100%;
+    }
+
+    .dropdown__content {
+      transform: translateY(100%);
+    }
+  }
+
   &--open {
     .dropdown {
       &__container {

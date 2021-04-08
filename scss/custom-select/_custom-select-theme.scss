@@ -4,6 +4,12 @@
   width: $custom-select-width;
   height: $custom-select-height;
 
+  &:focus-visible {
+    .custom-select__choose {
+      box-shadow: $focus;
+    }
+  }
+
   select {
     width: $custom-select-width;
     height: $custom-select-height;
@@ -59,8 +65,17 @@
       margin-top: rem(10);
     }
 
-    &:focus:not(:focus-visible) {
+    &:focus-visible{
       border: 1px solid $primary;
+    }
+  }
+
+  &--top {
+    .custom-select {
+      &__content {
+        border-top: 1px solid $custom-select-border-color;
+        border-bottom: 0;
+      }
     }
   }
 
