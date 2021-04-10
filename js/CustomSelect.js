@@ -18,6 +18,7 @@ class CustomSelect {
   initParams() {
     this.name = this.$.customSelect.getAttribute('name')
     this.isFilters = this.$.customSelect.dataset.filters // Set filters is activated.
+    this.firstDefault = this.$.customSelect.dataset.firstDefault // Set is first option is default value.
     this.isOnMobile = this.$.customSelect.dataset.mobile // Set custom mobile is activated.
     this.defaultLabel = this.$.customSelect.dataset.label // Set default label.
     this.virtualLabel = this.$.customSelect.dataset.label // Set activated label.
@@ -85,7 +86,8 @@ class CustomSelect {
       this.$.choose.setAttribute('id', this.name)
       this.$.choose.classList.add('custom-select__choose')
       if (!this.isFilters) {
-        this.$.choose.innerHTML = this.defaultLabel
+        if (this.firstDefault) this.$.choose.innerText = this.items[0].innerText
+        else this.$.choose.innerHTML = this.defaultLabel
       }
 
       // Create wrapping container for content.
@@ -99,6 +101,7 @@ class CustomSelect {
       // Create input for select value.
       this.$.input = document.createElement('input')
       this.$.input.setAttribute('name', this.name)
+      if (this.firstDefault) this.$.input.value = this.items[0].value
       this.$.input.style.display = 'none'
       this.$.customSelect.appendChild(this.$.input)
 
@@ -109,7 +112,8 @@ class CustomSelect {
       // Create the filter input.
       if (this.isFilters) {
         this.$.filter = document.createElement('input')
-        this.$.filter.value = this.defaultLabel
+        if (this.firstDefault) this.$.filter.value = this.items[0].innerText
+        else this.$.filter.value = this.defaultLabel
         this.$.choose.appendChild(this.$.filter)
       }
     }
@@ -229,7 +233,7 @@ class CustomSelect {
       this.$.choose.innerText = $item.innerText
     }
 
-    this.$.input.value = $item.getAttribute('value')
+    this.$.input.value = $item.dataset.value
     this.virtualLabel = $item.innerText
     this.$.customSelect.classList.remove('custom-select--open')
     this.$.customSelect.classList.remove('custom-select--finish')
